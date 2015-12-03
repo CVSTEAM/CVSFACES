@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Crear Usuario</title>
+        <h:outputStylesheet name="CrearUsuario.css" library="css"/>
+
+    </h:head>
+    <h:body>
+        <h:form id="frm">
+            <p:growl autoUpdate="true"/>
+            <h2>Registrarse</h2>
+
+            <p:outputLabel value="Tipo de Documento:"/>
+
+            <p:selectOneMenu style="width:120px" value="#{usuarioBean.usuario.TIPO_DOCUMENTO}" required="true">
+                <f:selectItem itemLabel="Cedula" itemValue="1"/>
+                <f:selectItem itemLabel="Pasaporte" itemValue="2"/>
+                <f:selectItem itemLabel="Tarjeta de Identidad" itemValue="3"/>
+            </p:selectOneMenu>
+
+            <br/>
+
+            <p:outputLabel value="Documento" for="txtdocumento"/>
+            <p:inputText id="txtdocumento" value="#{usuarioBean.usuario.NUMERO_DOCUMENTO}"/>
+
+            <p:outputLabel value="PrimerNombre" for="txtprimernombre"/>
+            <p:inputText id="txtprimernombre" value="#{usuarioBean.usuario.PRIMERNOMBRE}"/>
+
+            <p:outputLabel value="SegundoNombre" for="txtsegundonombre"/>
+            <p:inputText id="txtsegundonombre" value="#{usuarioBean.usuario.SEGUNDONOMBRE}"/>
+
+            <p:outputLabel value="PrimerApellido" for="txtprimerapellido"/>
+            <p:inputText id="txtprimerapellido" value="#{usuarioBean.usuario.PRIMERAPELLIDO}"/>
+
+            <p:outputLabel value="SegundoApellido" for="txtsegundoapellido"/>
+            <p:inputText id="txtsegundoapellido" value="#{usuarioBean.usuario.SEGUNDOAPELLIDO}"/>            
+
+            <p:outputLabel value="Telefono" for="txttelefono"/>
+            <p:inputText id="txttelefono" value="#{usuarioBean.usuario.TELEFONOFIJO}" />
+
+
+            <p:outputLabel value="Celular" for="txtcelular"/>
+            <p:inputText id="txtcelular" value="#{usuarioBean.usuario.CELULAR}" />
+
+
+            <p:outputLabel value="Correo" for="txtcorreo"/>
+            <p:inputText id="txtcorreo" value="#{usuarioBean.usuario.MAIL}"/>
+
+
+            <p:outputLabel value="Clave" for="txtclave"/>
+            <p:inputText id="txtclave" value="#{usuarioBean.usuario.CONTRASENA}" />
+
+            <br/>
+            <br/>
+
+            <p:outputLabel value="Tipo de Usuario:"/>
+
+            <p:selectOneMenu style="width:150px" value="#{usuarioBean.usuario.ID_TIPO_USUARIO}" required="true">
+                <f:selectItem itemLabel="USUARIO" itemValue="1"/>
+                <f:selectItem itemLabel="PROPIETARIO" itemValue="2"/>
+                <f:selectItem itemLabel="ADMINISTRADOR" itemValue="3"/>
+            </p:selectOneMenu>
+
+            <br/>
+            <br/>
+
+            <p:commandButton class="button" value="Registrar" actionListener="#{usuarioBean.registrar()}"/>
+            
+
+
+
+
+
+        </h:form>
+
+
+    </h:body>
+
+    <script type="text/javascript">
+        function limpiarForm()
+        {
+            document.getElementById("frm").reset();
+        }
+    </script>  
+
+</html>
+

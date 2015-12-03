@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>C.V.S. System </title>
+        <h:outputStylesheet name="Login.css" library="css"/>
+        <link href='https://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'></link>
+
+
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <p:messages autoUpdate="true" />
+            <center>
+                <h1><img src="logo100x100.png"></img> Bienvenido</h1>
+
+                <p:inputText styleClass="input" type="text" id="f_nombre" value="#{usuarioBean.usuario.MAIL}" placeholder="Usuario" />
+                <br/>
+                <br/>
+                <p:inputText styleClass="input" type="password" id="f_clave" value="#{usuarioBean.usuario.CONTRASENA}" placeholder="Contraseña"/> 
+            </center>
+            <p:commandButton icon="ui-icon-key" styleClass="button" value="Iniciar Sesion" action="#{loginBean.iniciarSesion(usuarioBean.usuario.MAIL,usuarioBean.usuario.CONTRASENA)}" style="font-size: 12px" />
+            <p:commandButton styleClass="button" value="Reestablecer" style="font-size: 12px" oncomplete="limpiarForm()" immediate="true"/> 
+            
+            
+            <a href="http://www.gmail.com">¿Olvidaste tu contraseña?</a>
+
+        </h:form>
+
+
+
+    </h:body>
+</html>
+
