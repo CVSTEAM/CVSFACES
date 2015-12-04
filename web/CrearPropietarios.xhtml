@@ -4,77 +4,87 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-       <h:head>
+    <h:head>
         <title>Crear Propietario</title>
-        <h:outputStylesheet name="CrearUsuario.css" library="css"/>
+        <h:outputStylesheet name="CrearPropietario.css" library="css"/>
 
     </h:head>
     <h:body>
         <h:form id="frm">
             <p:growl autoUpdate="true"/>
             <h2>Registrar Propietario</h2>
-
-            <p:outputLabel value="Tipo de Documento:" />
-
-            <p:selectOneMenu style="width:120px" rendered="true" value="#{propietarioBean.usuario.TIPO_DOCUMENTO}" required="true">
-                <f:selectItem itemLabel="Cedula" itemValue="1"/>
-                <f:selectItem itemLabel="Pasaporte" itemValue="2"/>
-                <f:selectItem itemLabel="Tarjeta de Identidad" itemValue="3"/>
-            </p:selectOneMenu>
-
-            <br/>
-
-            <p:outputLabel value="Documento" for="txtdocumento" />
-            <p:inputText id="txtdocumento" required="true" value="#{propietarioBean.usuario.NUMERO_DOCUMENTO}"/>
-
-            <p:outputLabel value="PrimerNombre" for="txtprimernombre" />
-            <p:inputText id="txtprimernombre" required="true" value="#{propietarioBean.usuario.PRIMERNOMBRE}"/>
-
-            <p:outputLabel value="SegundoNombre" for="txtsegundonombre"/>
-            <p:inputText id="txtsegundonombre" value="#{propietarioBean.usuario.SEGUNDONOMBRE}"/>
-
-            <p:outputLabel value="PrimerApellido" for="txtprimerapellido" />
-            <p:inputText id="txtprimerapellido" required="true" value="#{propietarioBean.usuario.PRIMERAPELLIDO}"/>
-
-            <p:outputLabel value="SegundoApellido" for="txtsegundoapellido" />
-            <p:inputText id="txtsegundoapellido" required="true" value="#{propietarioBean.usuario.SEGUNDOAPELLIDO}"/>            
-
-            <p:outputLabel value="Telefono" for="txttelefono" />
-            <p:inputText id="txttelefono" required="true" value="#{propietarioBean.usuario.TELEFONOFIJO}" />
+            <h:panelGrid columns="4" cellspacing="20px">
 
 
-            <p:outputLabel value="Celular" for="txtcelular" />
-            <p:inputText id="txtcelular" value="#{propietarioBean.usuario.CELULAR}" />
+                <p:outputLabel value="Tipo de Documento:" />
+
+                <p:selectOneMenu style="width:120px" rendered="true" value="#{propietarioBean.usuario.TIPO_DOCUMENTO}" required="true">
+                    <f:selectItem itemLabel="Cedula" itemValue="1"/>
+                    <f:selectItem itemLabel="Pasaporte" itemValue="2"/>
+                    <f:selectItem itemLabel="Tarjeta de Identidad" itemValue="3"/>
+                </p:selectOneMenu>
 
 
-            <p:outputLabel value="Correo" for="txtcorreo"/>
-            <p:inputText id="txtcorreo" required="true" value="#{propietarioBean.usuario.MAIL}"/>
+
+                <p:outputLabel value="Documento" for="txtdocumento" />
+                <p:inputText id="txtdocumento" required="true" value="#{propietarioBean.usuario.NUMERO_DOCUMENTO}"/>
+
+                <p:outputLabel value="PrimerNombre" for="txtprimernombre" />
+                <p:inputText id="txtprimernombre" required="true" value="#{propietarioBean.usuario.PRIMERNOMBRE}"/>
+
+                <p:outputLabel value="SegundoNombre" for="txtsegundonombre"/>
+                <p:inputText id="txtsegundonombre" value="#{propietarioBean.usuario.SEGUNDONOMBRE}"/>
+
+                <p:outputLabel value="PrimerApellido" for="txtprimerapellido" />
+                <p:inputText id="txtprimerapellido" required="true" value="#{propietarioBean.usuario.PRIMERAPELLIDO}"/>
+
+                <p:outputLabel value="SegundoApellido" for="txtsegundoapellido" />
+                <p:inputText id="txtsegundoapellido" required="true" value="#{propietarioBean.usuario.SEGUNDOAPELLIDO}"/>            
+
+                <p:outputLabel value="Telefono" for="txttelefono" />
+                <p:inputText id="txttelefono" required="true" value="#{propietarioBean.usuario.TELEFONOFIJO}" />
 
 
-            <p:outputLabel value="Clave" for="txtclave" />
-            <p:password id="txtclave" required="true" value="#{propietarioBean.usuario.CONTRASENA}" />
+                <p:outputLabel value="Celular" for="txtcelular" />
+                <p:inputText id="txtcelular" value="#{propietarioBean.usuario.CELULAR}" />
 
-            <br/>
-            <br/>
 
-            <p:outputLabel value="Tipo de Usuario:" />
+                <p:outputLabel value="Correo" for="txtcorreo"/>
+                <p:inputText id="txtcorreo" required="true" value="#{propietarioBean.usuario.MAIL}"/>
 
-            <p:selectOneMenu style="width:150px"  value="#{propietarioBean.usuario.ID_TIPO_USUARIO}" required="true">
+
+                <p:outputLabel value="Clave" for="txtclave" />
+                <p:password id="txtclave" required="true" value="#{propietarioBean.usuario.CONTRASENA}" 
+                            validatorMessage="Las Claves no Coinciden" weakLabel="Demasiado Debil" strongLabel="Muy Fuerte" goodLabel="Aceptable"
+                            match="txtconfirmarclave" feedback="true" promptLabel="Ingrese una Clave"
+                            />
+
+
+
+
+                <p:outputLabel value="Tipo de Usuario:" />
+
+                <p:selectOneMenu style="width:150px"  value="#{propietarioBean.usuario.ID_TIPO_USUARIO}" required="true">
+
+                    <f:selectItem itemLabel="PROPIETARIO" itemValue="3"/>
+
+                   
+
+                </p:selectOneMenu>
                 
-                <f:selectItem itemLabel="PROPIETARIO" itemValue="3"/>
-                
-            </p:selectOneMenu>
-
-            <br/>
-            <br/>
-
-            <p:commandButton class="button" value="Registrar" actionListener="#{propietarioBean.registrar()}"/>
-            
+                 <p:outputLabel value="Confirmar Clave" for="txtconfirmarclave" />
+                    <p:password id="txtconfirmarclave" required="true" />
 
 
 
 
 
+
+
+            </h:panelGrid>
+            <center>
+                <p:commandButton class="button" value="Registrar" actionListener="#{propietarioBean.registrar()}"/>
+            </center>
         </h:form>
 
 
