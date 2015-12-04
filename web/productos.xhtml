@@ -48,7 +48,7 @@
                                         <p:link value="Iniciar Sesion" outcome="Login.cvs" rendered="#{loginBean.usuario == null}"/>
                                         <h:outputLabel value="Bienvenido #{loginBean.usuario.PRIMERNOMBRE}" rendered="#{loginBean.usuario != null}"/>
                                         <h:link value="Mi Cuenta" outcome="modificarUsuario.cvs" rendered="#{loginBean.usuario != null}"/>
-                                        <p:commandLink value="Cerrar Sesion.cvs" action="#{loginBean.logout()}" rendered="#{loginBean.usuario != null}"/>
+                                        <p:commandLink value="Cerrar Sesion" action="#{loginBean.logout()}" rendered="#{loginBean.usuario != null}"/>
                                     </h:panelGrid>
                                 </h:form>
                             </ul>

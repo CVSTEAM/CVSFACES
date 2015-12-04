@@ -44,25 +44,26 @@
             <header>
                     
                    
-                                  <ul id="top_nav">
+                                   <ul id="top_nav">
                                 <h:form>
                                     <h:panelGrid columns="4" width="400px">   
-                                        <p:link value="Inicio" outcome="home"/>
-                                        <p:link value="Registrarse" outcome="crearUsuario" rendered="#{loginBean.usuario == null}"/>
-                                        <p:link value="Iniciar Sesion" outcome="Login" rendered="#{loginBean.usuario == null}"/>
+                                        <p:link value="Inicio" outcome="home.cvs"/>
+                                        <p:link value="Registrarse" outcome="crearUsuario.cvs" rendered="#{loginBean.usuario == null}"/>
+                                        <p:link value="Iniciar Sesion" outcome="Login.cvs" rendered="#{loginBean.usuario == null}"/>
                                         <h:outputLabel value="Bienvenido #{loginBean.usuario.PRIMERNOMBRE}" rendered="#{loginBean.usuario != null}"/>
-                                        <h:link value="Mi Cuenta" outcome="modificarUsuario" rendered="#{loginBean.usuario != null}"/>
+                                        <h:link value="Mi Cuenta" outcome="modificarUsuario.cvs" rendered="#{loginBean.usuario != null}"/>
                                         <p:commandLink value="Cerrar Sesion" action="#{loginBean.logout()}" rendered="#{loginBean.usuario != null}"/>
                                     </h:panelGrid>
                                 </h:form>
                             </ul>
+                                
                             <nav>
                                 <ul id="menu">
-                                    <li class="active"><a href="mision.xhtml">Quienes Somos</a></li>
-                                    <li><a href="tiendas.xhtml">Tiendas</a></li>
-                                    <li><a href="productos.xhtml">Productos</a></li>
-                                    <li><a href="eventos.xhtml">Eventos</a></li>
-                                    <li><a href="contacto.xhtml">Contacto</a></li>
+                                    <li class="active"><a href="mision.cvs">Quienes Somos</a></li>
+                                    <li><a href="tiendas.cvs">Tiendas</a></li>
+                                    <li><a href="productos.cvs">Productos</a></li>
+                                    <li><a href="eventos.cvs">Eventos</a></li>
+                                    <li><a href="contacto.cvs">Contacto</a></li>
 
                                 </ul>
                             </nav>
