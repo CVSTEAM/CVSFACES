@@ -77,6 +77,30 @@ public class LoginBean{
         }
         return usuario;
     }
+    
+    
+        public void listar() throws Exception {
+        UsuarioDAO dao;
+        try {
+            dao = new UsuarioDAO();
+            lstDatosUsuario = dao.listar();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
+    
+        public void modificar() throws Exception {
+        UsuarioDAO dao;
+        try {
+            dao = new UsuarioDAO();
+            dao.modificar(usuario);
+            this.listar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Modificado", "Usuario Modificado con Exito"));
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 
     public void logout() {
         ExternalContext ctx

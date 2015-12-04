@@ -14,7 +14,7 @@ import model.Usuario;
 
 public class UsuarioBean implements Serializable {
 
-    private Usuario usuario = new Usuario();
+    private Usuario usuario= new Usuario();
     private List<Usuario> lstUsuarios;
     private String accion;
 
@@ -41,13 +41,13 @@ public class UsuarioBean implements Serializable {
     public void setLstUsuarios(List<Usuario> lstUsuarios) {
         this.lstUsuarios = lstUsuarios;
     }
-    
+
     private boolean isPostBack() {
         boolean rpta;
         rpta = FacesContext.getCurrentInstance().isPostback();
         return rpta;
     }
-    
+
     public void listarr(String Valor) throws Exception {
         UsuarioDAO dao;
         try {
@@ -82,17 +82,6 @@ public class UsuarioBean implements Serializable {
             dao = new UsuarioDAO();
             dao.registrar(usuario);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Registrado", "Usuario Registrado con exito"));
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-
-    public void modificar() throws Exception {
-        UsuarioDAO dao;
-        try {
-            dao = new UsuarioDAO();
-            dao.modificar(usuario);
-            this.listar();
         } catch (Exception e) {
             throw e;
         }

@@ -8,6 +8,8 @@ import java.util.List;
 import model.Usuario;
 
 public class UsuarioDAO extends DAO {
+    
+    private Usuario usuario = new Usuario();
 
     public boolean iniciarSesion(String email, String pass) throws Exception {
         this.Conectar();
@@ -137,22 +139,22 @@ public class UsuarioDAO extends DAO {
         return lista;
     }
 
-    public void modificar(Usuario usr) throws Exception {
+    public void modificar(Usuario usuario) throws Exception {
         try {
             this.Conectar();
             PreparedStatement st = this.getConnection().prepareStatement("UPDATE USUARIO SET TIPO_DOCUMENTO= ?,PRIMER_NOMBRE= ?,SEGUNDO_NOMBRE= ?,PRIMER_APELLIDO= ?,SEGUNDO_APELLIDO= ?,NUMERO_DOCUMENTO= ?,MAIL= ?,CONTRASENA= ?,TELEFONO_FIJO= ?,TELEFONO_CELULAR= ?,ID_TIPO_USUARIO= ? WHERE ID_USUARIO= ? ");
-            st.setString(1, usr.getTIPO_DOCUMENTO());
-            st.setString(2, usr.getPRIMERNOMBRE());
-            st.setString(3, usr.getSEGUNDONOMBRE());
-            st.setString(4, usr.getPRIMERAPELLIDO());
-            st.setString(5, usr.getSEGUNDOAPELLIDO());
-            st.setString(6, usr.getNUMERO_DOCUMENTO());
-            st.setString(7, usr.getMAIL());
-            st.setString(8, usr.getCONTRASENA());
-            st.setString(9, usr.getTELEFONOFIJO());
-            st.setString(10, usr.getCELULAR());
-            st.setInt(11, usr.getID_TIPO_USUARIO());
-            st.setInt(12, usr.getID_USUARIO());
+            st.setString(1, usuario.getTIPO_DOCUMENTO());
+            st.setString(2, usuario.getPRIMERNOMBRE());
+            st.setString(3, usuario.getSEGUNDONOMBRE());
+            st.setString(4, usuario.getPRIMERAPELLIDO());
+            st.setString(5, usuario.getSEGUNDOAPELLIDO());
+            st.setString(6, usuario.getNUMERO_DOCUMENTO());
+            st.setString(7, usuario.getMAIL());
+            st.setString(8, usuario.getCONTRASENA());
+            st.setString(9, usuario.getTELEFONOFIJO());
+            st.setString(10, usuario.getCELULAR());
+            st.setInt(11, usuario.getID_TIPO_USUARIO());
+            st.setInt(12, usuario.getID_USUARIO());
             st.executeUpdate();
         } catch (Exception e) {
             throw e;
