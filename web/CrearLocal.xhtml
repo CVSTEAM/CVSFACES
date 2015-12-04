@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Crear Local</title>
+        <h:outputStylesheet name="CrearUsuario.css" library="css"/>
+    </h:head>
+    <h:body>
+        <h:form id="frm">
+            <h:panelGrid columns="2" cellspacing="20px">
+                <p:growl autoUpdate="true"/>
+                <h2>Crear Local</h2>
+
+
+                <p:outputLabel value="Nombre" for="txtnombre" />
+                <p:inputText id="txtnombre" required="true"/>
+
+                <p:outputLabel value="Número de Local" for="txtnumero" />
+                <p:inputText id="txtnumero" required="true"/>
+
+                <p:outputLabel value="Id Usuario" for="txtidusuario" />
+                <p:inputText id="txtidusuario" required="true"/> 
+
+                <br/>
+                <br/>
+
+                <p:commandButton class="button" value="Crear" />
+
+            </h:panelGrid>
+        </h:form>  
+    </h:body>
+</html>
+
