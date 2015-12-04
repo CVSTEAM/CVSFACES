@@ -5,24 +5,57 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Crear Productos</title>
+        <title>Crear producto</title>
+        <h:outputStylesheet name="CrearUsuario.css" library="css"/>
+
     </h:head>
     <h:body>
-        
-        <h:form>
-            
-           
-            <p:outputLabel value="Bienvenido #{loginBean.usuario.PRIMERNOMBRE}" for="txtnombreproducto"/>
-            <p:inputText id="txtnombreproducto"/>
-            
-            
-            
-            
+
+        <h:form id="frm">
+            <p:growl autoUpdate="true"/>
+            <center>
+                <h2>Registrar Producto</h2>
+            </center>
+            <h:panelGrid columns="2" cellspacing="20px">
+
+
+
+
+                <p:outputLabel value="Nombre" for="txtnombre"/>
+                <p:inputText id="txtnombre" required="true" value=""/>
+
+                <p:outputLabel value="Precio"  for="txtprecio"/>
+                <p:inputText id="txtprecio" required="true" value=""/>
+
+                <p:outputLabel value="Foto" for="txtfoto"/>
+                <p:fileUpload  auto="true"  id="txtfoto" required="true" value=""/>
+
+                <p:outputLabel value="Descripción" for="txtdescripción"/>
+                <p:inputText id="txtdescripción" required="true" value=""/>
+
+                <p:outputLabel value="Categoria" for="txtcategoria"/>
+
+                <p:selectOneMenu style="width:150px" value="" required="true" id="txtcategoria">
+
+                    <f:selectItem itemLabel="Ropa" itemValue="1"/>
+                    <f:selectItem itemLabel="Tecnologia" itemValue="2"/>
+                    <f:selectItem itemLabel="Deporte" itemValue="3"/>
+                    <f:selectItem itemLabel="Hogar" itemValue="4"/>
+                    <f:selectItem itemLabel="Ocio" itemValue="5"/>
+                </p:selectOneMenu>
+
+
+
+
+            </h:panelGrid>
+            <center>
+                <p:commandButton class="button" value="Registrar" actionListener="#{usuarioBean.registrar()}"/>
+            </center>
         </h:form>
-        
-        
-        
-        
+
+
+
+
     </h:body>
 </html>
 

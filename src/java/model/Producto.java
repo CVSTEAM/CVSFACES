@@ -2,11 +2,20 @@ package model;
 
 public class Producto {
     
+    private int ID_PRODUCTO;
     private String NOMBRE;
     private int PRECIO;
-    private int ID_CATEGORIA;
     private String FOTO;
-    private int ID_PRODUCTO;
+    private String DESCRIPCION;
+    private int ID_CATEGORIA;
+
+    public int getID_PRODUCTO() {
+        return ID_PRODUCTO;
+    }
+
+    public void setID_PRODUCTO(int ID_PRODUCTO) {
+        this.ID_PRODUCTO = ID_PRODUCTO;
+    }
 
     public String getNOMBRE() {
         return NOMBRE;
@@ -24,14 +33,6 @@ public class Producto {
         this.PRECIO = PRECIO;
     }
 
-    public int getID_CATEGORIA() {
-        return ID_CATEGORIA;
-    }
-
-    public void setID_CATEGORIA(int ID_CATEGORIA) {
-        this.ID_CATEGORIA = ID_CATEGORIA;
-    }
-
     public String getFOTO() {
         return FOTO;
     }
@@ -40,14 +41,24 @@ public class Producto {
         this.FOTO = FOTO;
     }
 
-    public int getID_PRODUCTO() {
-        return ID_PRODUCTO;
+    public String getDESCRIPCION() {
+        return DESCRIPCION;
     }
 
-    public void setID_PRODUCTO(int ID_PRODUCTO) {
-        this.ID_PRODUCTO = ID_PRODUCTO;
+    public void setDESCRIPCION(String DESCRIPCION) {
+        this.DESCRIPCION = DESCRIPCION;
     }
 
+    public int getID_CATEGORIA() {
+        return ID_CATEGORIA;
+    }
 
+    public void setID_CATEGORIA(int ID_CATEGORIA) {
+        this.ID_CATEGORIA = ID_CATEGORIA;
+    }
+    
+    
+
+    
     
 }
