@@ -2,6 +2,7 @@ package BEAN;
 
 import DAO.UsuarioDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -14,6 +15,15 @@ public class LoginBean{
 
     
     private Usuario usuario;
+    private List<Usuario> lstDatosUsuario;
+
+    public List<Usuario> getLstDatosUsuario() {
+        return lstDatosUsuario;
+    }
+
+    public void setLstDatosUsuario(List<Usuario> lstDatosUsuario) {
+        this.lstDatosUsuario = lstDatosUsuario;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -36,19 +46,25 @@ public class LoginBean{
             if (usD.iniciarSesion(email, pass)) {
                 System.out.println("LOGUEADOas");
                 usuario = usD.obtenerUsuario(email);
-                System.out.println(usuario.getPRIMERNOMBRE());
+                
                 String tipo = usD.obtTipoUsuario(email);
                 switch (tipo) {
                     case "1":
                         {
                             FacesContext fc = FacesContext.getCurrentInstance();
-                            fc.getExternalContext().redirect("/CVSFACES_-_copia/faces/home.xhtml");
+                            fc.getExternalContext().redirect("home.cvs");
                             break;
                         }
                     case "2":
                         {
                             FacesContext fc = FacesContext.getCurrentInstance();
-                            fc.getExternalContext().redirect("/CVSFACES_-_copia/faces/crearProducto.xhtml");
+                            fc.getExternalContext().redirect("/CVSFACES_-_copia/administracion.cvs");
+                            break;
+                        }
+                    case "3":
+                        {
+                            FacesContext fc = FacesContext.getCurrentInstance();
+                            fc.getExternalContext().redirect("/CVSFACES_-_copia/crearProducto.cvs");
                             break;
                         }
                 }
@@ -77,7 +93,7 @@ public class LoginBean{
             // si se usa una HttpServletResponse fallará.
             // Sin embargo, como ya está fuera del ciclo de vida 
             // de JSF se debe usar la ruta completa -_-U
-            ctx.redirect(ctxPath + "/faces/index.xhtml");
+            ctx.redirect(ctxPath + "/home.cvs");
         } catch (IOException ex) {
             ex.printStackTrace();
         }

@@ -24,6 +24,7 @@
     </h:head>
 
     <h:body >
+
         <div class="body6">
             <div class="body1">
                 <div class="body5">
@@ -31,20 +32,24 @@
                         <!-- header -->
                         <header>
 
-
-                            <ul id="top_nav">
-                                <h:form>
-                                    <h:panelGrid columns="4" width="400px">   
-                                        <p:link value="Inicio" outcome="home"/>
-                                        <p:link value="Registrarse" outcome="crearUsuario" rendered="#{loginBean.usuario == null}"/>
-                                        <p:link value="Iniciar Sesion" outcome="Login" rendered="#{loginBean.usuario == null}"/>
-                                        <h:outputLabel value="Bienvenido #{loginBean.usuario.PRIMERNOMBRE}" rendered="#{loginBean.usuario != null}"/>
-                                        <h:link value="Mi Cuenta" outcome="modificarUsuario" rendered="#{loginBean.usuario != null}"/>
-                                        <p:commandLink value="Cerrar Sesion" action="#{loginBean.logout()}" rendered="#{loginBean.usuario != null}"/>
-                                    </h:panelGrid>
-                                </h:form>
-                            </ul>
                             <nav>
+                                <ul id="top_nav">
+                                    <h:form>
+                                        <h:panelGrid columns="6" width="600px" cellspacing="20px">
+                                            <p:link value="Inicio" outcome="home"/>
+                                            <p:link value="Registrarse" outcome="crearUsuario"/>
+                                            <p:link value="Iniciar Sesion" outcome="Login" rendered="#{loginBean.usuario == null}"/>
+                                            <h:outputLabel value="Bienvenido #{loginBean.usuario.PRIMERNOMBRE}"/>
+                                            <h:link value="Mi Cuenta" outcome="modificarUsuario"/>
+                                            <p:commandLink value="Cerrar Sesion" action="#{loginBean.logout()}"/>
+                                        </h:panelGrid>
+                                    </h:form>
+                                </ul>
+                            </nav>
+                            <br/>
+
+                            <nav>
+
                                 <ul id="menu">
                                     <li class="active"><a href="mision.xhtml">Quienes Somos</a></li>
                                     <li><a href="tiendas.xhtml">Tiendas</a></li>
@@ -53,7 +58,9 @@
                                     <li><a href="contacto.xhtml">Contacto</a></li>
 
                                 </ul>
+
                             </nav>
+
                         </header><div class="ic">More Website Templates  @ TemplateMonster.com - August 1st 2011!</div>
                         <!-- / header -->
                         <!-- content -->

@@ -173,5 +173,38 @@ public class UsuarioDAO extends DAO {
             this.Cerrar();
         }
     }
+    
+        public Usuario leerID(Usuario user) throws Exception {
+        Usuario usr = null;
+        ResultSet rs;
+
+        try {
+            this.Conectar();
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT ID_USUARIO,TIPO_DOCUMENTO,PRIMER_NOMBRE,SEGUNDO_NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO,NUMERO_DOCUMENTO,MAIL,CONTRASENA,TELEFONO_FIJO,TELEFONO_CELULAR,ID_TIPO_USUARIO FROM USUARIO WHERE ID_USUARIO=?");
+            st.setInt(1, user.getID_USUARIO());
+            rs = st.executeQuery();
+            while (rs.next()) {
+                usr = new Usuario();
+                usr.setID_USUARIO(rs.getInt("ID_USUARIO"));
+                usr.setTIPO_DOCUMENTO(rs.getString("TIPO_DOCUMENTO"));
+                usr.setPRIMERNOMBRE(rs.getString("PRIMER_NOMBRE"));
+                usr.setSEGUNDONOMBRE(rs.getString("SEGUNDO_NOMBRE"));
+                usr.setPRIMERAPELLIDO(rs.getString("PRIMER_APELLIDO"));
+                usr.setSEGUNDOAPELLIDO(rs.getString("SEGUNDO_APELLIDO"));
+                usr.setNUMERO_DOCUMENTO(rs.getString("DOCUMENTO"));
+                usr.setMAIL(rs.getString("MAIL"));
+                usr.setCONTRASENA(rs.getString("CONTRASENA"));
+                usr.setTELEFONOFIJO(rs.getString("TELEFONO_FIJO"));
+                usr.setCELULAR(rs.getString("TELEFONO_CELULAR"));
+                usr.setID_TIPO_USUARIO(rs.getInt("ID_TIPO_USUARIO"));                
+                
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            this.Cerrar();
+        }
+        return usr;
+    }
 
 }
