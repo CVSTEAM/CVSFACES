@@ -15,11 +15,15 @@ public class Local {
 
     private int ID_LOCAL;
 
-    private int ID_TIPO_USUARIO;
+  
 
     private String Nombre;
 
     private String Numero;
+    
+    private int ID_USUARIO;
+
+  
 
     public int getID_LOCAL() {
         return ID_LOCAL;
@@ -29,13 +33,7 @@ public class Local {
         this.ID_LOCAL = ID_LOCAL;
     }
 
-    public int getID_TIPO_USUARIO() {
-        return ID_TIPO_USUARIO;
-    }
-
-    public void setID_TIPO_USUARIO(int ID_TIPO_USUARIO) {
-        this.ID_TIPO_USUARIO = ID_TIPO_USUARIO;
-    }
+ 
 
     public String getNombre() {
         return Nombre;
@@ -51,6 +49,14 @@ public class Local {
 
     public void setNumero(String Numero) {
         this.Numero = Numero;
+    }
+    
+      public int getID_USUARIO() {
+        return ID_USUARIO;
+    }
+
+    public void setID_USUARIO(int ID_USUARIO) {
+        this.ID_USUARIO = ID_USUARIO;
     }
 
 }
