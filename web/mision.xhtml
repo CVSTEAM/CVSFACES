@@ -2,11 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
 
 
-    <head>
+    <h:head>
         <title>CVS System</title>
 
         <link rel="stylesheet" href="css/reset.css" type="text/css" media="all"></link>
@@ -33,36 +34,42 @@
                         <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" alt="" /></a>
                 </div>
         <![endif]-->
-    </head>
-    <body id="page1">
+    </h:head>
+    <h:body id="page1">
 
         <div class="body6">
-        <div class="body1">
+            <div class="body1">
 
-        <div class="main">
+                <div class="main">
                     <!-- header -->
                     <header>
 
-                        <nav>
-                            <ul id="top_nav">
-                                <li><a href="home.xhtml">Inicio</a></li>
-                                <li><a href="crearUsuario.xhtml">Registrarse</a></li>
-                                <li><a href="login.xhtml">Iniciar Sesión</a></li>							
-                            </ul>
-                        </nav>
+                        <ul id="top_nav">
+                            <h:form>
+                                <h:panelGrid columns="4" width="400px">   
+                                    <p:link value="Inicio" outcome="home.cvs"/>
+                                    <p:link value="Registrarse" outcome="crearUsuario.cvs" rendered="#{loginBean.usuario == null}"/>
+                                    <p:link value="Iniciar Sesion" outcome="Login.cvs" rendered="#{loginBean.usuario == null}"/>
+                                    <h:outputLabel value="Bienvenido #{loginBean.usuario.PRIMERNOMBRE}" rendered="#{loginBean.usuario != null}"/>
+                                    <h:link value="Mi Cuenta" outcome="modificarUsuario.cvs" rendered="#{loginBean.usuario != null}"/>
+                                    <p:commandLink value="Cerrar Sesion.cvs" action="#{loginBean.logout()}" rendered="#{loginBean.usuario != null}"/>
+                                </h:panelGrid>
+                            </h:form>
+                        </ul>
+
                         <nav>
                             <ul id="menu">
-                                <li class="active"><a href="mision.xhtml">Quienes Somos</a></li>
-                                <li><a href="tiendas.xhtml">Tiendas</a></li>
-                                <li><a href="productos.xhtml">Productos</a></li>
-                                <li><a href="eventos.xhtml">Eventos</a></li>
-                                <li><a href="contacto.xhtml">Contacto</a></li>
+                                <li class="active"><a href="mision.cvs">Quienes Somos</a></li>
+                                <li><a href="tiendas.cvs">Tiendas</a></li>
+                                <li><a href="productos.cvs">Productos</a></li>
+                                <li><a href="eventos.cvs">Eventos</a></li>
+                                <li><a href="contacto.cvs">Contacto</a></li>
 
                             </ul>
                         </nav>
                         <link rel="stylesheet" href="css/QuienesSomos.css"></link>
                     </header> <br></br>
-        
+
                     <div id="container">
 
 
@@ -80,47 +87,47 @@
                         <h1 align="left">Objetivos</h1> <br></br>
                         <p align="left">
                             C.V.S System es un software que permite orientar a los usuarios que realizan  actividades dentro de un centro comercial en particular así como : <br></br>
-                                • Suministrar  una plataforma que permita  buscar   un  producto y locales  en específico.<br></br>
-                                • Facilitar la orientación de  usuarios durante  su  permanencia en el centro comercial<br></br>
-                                        • Brindar información oportuna  a usuarios sobre eventos, promociones y actividades de interés.
-                                        </p>
+                            • Suministrar  una plataforma que permita  buscar   un  producto y locales  en específico.<br></br>
+                            • Facilitar la orientación de  usuarios durante  su  permanencia en el centro comercial<br></br>
+                            • Brindar información oportuna  a usuarios sobre eventos, promociones y actividades de interés.
+                        </p>
 
 
-                                        </div>        
+                    </div>        
 
-                                        <div>
-                                            <div class="footer">
-                                                <div class="main">
-                                                    <!-- footer -->
-                                                    <footer>
-                                                        <div class="wrapper">
-                                                            <section class="col1 pad_left1">
-                                                                <h3> Teléfono: <span>285-17-84</span></h3>
-                                                                <a rel="nofollow" href="http://www.gmail.com/" target="_blank">Correo</a> by Gmail.com
-                                                            </section>
-                                                            <section class="col2 pad_left1">
-                                                                <h3>Follow Us </h3>
-                                                                <ul id="icons">
-                                                                    <li><a href="#" class="normaltip" title="Facebook"><img src="images/icon1.gif" alt=""></img></a></li>
-                                                                    <li><a href="#" class="normaltip" title="Twitter"><img src="images/icon3.gif" alt=""></img></a></li>
+                    <div>
+                        <div class="footer">
+                            <div class="main">
+                                <!-- footer -->
+                                <footer>
+                                    <div class="wrapper">
+                                        <section class="col1 pad_left1">
+                                            <h3> Teléfono: <span>285-17-84</span></h3>
+                                            <a rel="nofollow" href="http://www.gmail.com/" target="_blank">Correo</a> by Gmail.com
+                                        </section>
+                                        <section class="col2 pad_left1">
+                                            <h3>Follow Us </h3>
+                                            <ul id="icons">
+                                                <li><a href="#" class="normaltip" title="Facebook"><img src="images/icon1.gif" alt=""></img></a></li>
+                                                <li><a href="#" class="normaltip" title="Twitter"><img src="images/icon3.gif" alt=""></img></a></li>
 
-                                                                </ul>
-                                                            </section>
-                                                        </div>
-                                                        <!-- {%FOOTER_LINK} -->
-                                                    </footer>
-                                                    <!-- / footer -->
-                                                </div>
-                                            </div>
-                                        </div>
+                                            </ul>
+                                        </section>
+                                    </div>
+                                    <!-- {%FOOTER_LINK} -->
+                                </footer>
+                                <!-- / footer -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
-                                        </body>
+    </h:body>
 
 
 
 
 
-                                        </html>
+</html>
 

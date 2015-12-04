@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
  
 
 
@@ -42,24 +43,29 @@
 <!-- header -->
             <header>
                     
-                    <nav>
-                            <ul id="top_nav">
-                                    <li><a href="home.jsp">Inicio</a></li>
-                                    <li><a href="crearUsuario.xhtml">Registrarse</a></li>
-                                    <li><a href="Login.xhtml">Iniciar Sesión</a></li>							
+                   
+                                  <ul id="top_nav">
+                                <h:form>
+                                    <h:panelGrid columns="4" width="400px">   
+                                        <p:link value="Inicio" outcome="home"/>
+                                        <p:link value="Registrarse" outcome="crearUsuario" rendered="#{loginBean.usuario == null}"/>
+                                        <p:link value="Iniciar Sesion" outcome="Login" rendered="#{loginBean.usuario == null}"/>
+                                        <h:outputLabel value="Bienvenido #{loginBean.usuario.PRIMERNOMBRE}" rendered="#{loginBean.usuario != null}"/>
+                                        <h:link value="Mi Cuenta" outcome="modificarUsuario" rendered="#{loginBean.usuario != null}"/>
+                                        <p:commandLink value="Cerrar Sesion" action="#{loginBean.logout()}" rendered="#{loginBean.usuario != null}"/>
+                                    </h:panelGrid>
+                                </h:form>
                             </ul>
-                    </nav>
-                    <nav>
-                            <ul id="menu">
-                                    <li class="active"><a href="mision.jsp">Quienes Somos</a></li>
-                                 
+                            <nav>
+                                <ul id="menu">
+                                    <li class="active"><a href="mision.xhtml">Quienes Somos</a></li>
                                     <li><a href="tiendas.xhtml">Tiendas</a></li>
                                     <li><a href="productos.xhtml">Productos</a></li>
                                     <li><a href="eventos.xhtml">Eventos</a></li>
                                     <li><a href="contacto.xhtml">Contacto</a></li>
 
-                            </ul>
-                    </nav>
+                                </ul>
+                            </nav>
 			</header><div class="ic">More Website Templates  @ TemplateMonster.com - August 1st 2011!</div>
  <article id="content">
 <div class="slider_bg">

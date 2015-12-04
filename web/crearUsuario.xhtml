@@ -25,34 +25,34 @@
             <br/>
 
             <p:outputLabel value="Documento" for="txtdocumento"/>
-            <p:inputText id="txtdocumento" value="#{usuarioBean.usuario.NUMERO_DOCUMENTO}"/>
+            <p:inputText id="txtdocumento" required="true" value="#{usuarioBean.usuario.NUMERO_DOCUMENTO}"/>
 
             <p:outputLabel value="PrimerNombre" for="txtprimernombre"/>
-            <p:inputText id="txtprimernombre" value="#{usuarioBean.usuario.PRIMERNOMBRE}"/>
+            <p:inputText id="txtprimernombre" required="true"  value="#{usuarioBean.usuario.PRIMERNOMBRE}"/>
 
             <p:outputLabel value="SegundoNombre" for="txtsegundonombre"/>
-            <p:inputText id="txtsegundonombre" value="#{usuarioBean.usuario.SEGUNDONOMBRE}"/>
+            <p:inputText id="txtsegundonombre"   value="#{usuarioBean.usuario.SEGUNDONOMBRE}"/>
 
             <p:outputLabel value="PrimerApellido" for="txtprimerapellido"/>
-            <p:inputText id="txtprimerapellido" value="#{usuarioBean.usuario.PRIMERAPELLIDO}"/>
+            <p:inputText id="txtprimerapellido" required="true"  value="#{usuarioBean.usuario.PRIMERAPELLIDO}"/>
 
             <p:outputLabel value="SegundoApellido" for="txtsegundoapellido"/>
-            <p:inputText id="txtsegundoapellido" value="#{usuarioBean.usuario.SEGUNDOAPELLIDO}"/>            
+            <p:inputText id="txtsegundoapellido" required="true"  value="#{usuarioBean.usuario.SEGUNDOAPELLIDO}"/>            
 
             <p:outputLabel value="Telefono" for="txttelefono"/>
-            <p:inputText id="txttelefono" value="#{usuarioBean.usuario.TELEFONOFIJO}" />
+            <p:inputText id="txttelefono" required="true"  value="#{usuarioBean.usuario.TELEFONOFIJO}" />
 
 
             <p:outputLabel value="Celular" for="txtcelular"/>
-            <p:inputText id="txtcelular" value="#{usuarioBean.usuario.CELULAR}" />
+            <p:inputText id="txtcelular" required="true"  value="#{usuarioBean.usuario.CELULAR}" />
 
 
             <p:outputLabel value="Correo" for="txtcorreo"/>
-            <p:inputText id="txtcorreo" value="#{usuarioBean.usuario.MAIL}"/>
+            <p:inputText id="txtcorreo" required="true"  value="#{usuarioBean.usuario.MAIL}"/>
 
 
             <p:outputLabel value="Clave" for="txtclave"/>
-            <p:password id="txtclave" value="#{usuarioBean.usuario.CONTRASENA}" />
+            <p:password id="txtclave" required="true"  value="#{usuarioBean.usuario.CONTRASENA}" />
 
             <br/>
             <br/>
