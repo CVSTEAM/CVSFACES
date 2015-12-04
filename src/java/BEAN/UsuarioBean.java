@@ -66,15 +66,7 @@ public class UsuarioBean implements Serializable {
         }
     }
 
-    public void listar() throws Exception {
-        UsuarioDAO dao;
-        try {
-            dao = new UsuarioDAO();
-            lstUsuarios = dao.listar();
-        } catch (Exception e) {
-            throw e;
-        }
-    }
+
 
     public void registrar() throws Exception {
         UsuarioDAO dao;
@@ -87,16 +79,6 @@ public class UsuarioBean implements Serializable {
         }
     }
 
-    public void eliminar(Usuario usr) throws Exception {
-        UsuarioDAO dao;
-        try {
-            dao = new UsuarioDAO();
-            dao.eliminar(usr);
-            this.listar();
-        } catch (Exception e) {
-            throw e;
-        }
-    }
 
     public void leerID(Usuario usr) throws Exception {
         UsuarioDAO dao;

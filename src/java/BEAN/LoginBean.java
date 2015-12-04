@@ -10,10 +10,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import model.Usuario;
 
+public class LoginBean {
 
-public class LoginBean{
-
-    
     private Usuario usuario;
     private List<Usuario> lstDatosUsuario;
 
@@ -33,8 +31,6 @@ public class LoginBean{
         this.usuario = usuario;
     }
 
-
-
     public Usuario iniciarSesion(String email, String pass) {
 
         try {
@@ -46,27 +42,24 @@ public class LoginBean{
             if (usD.iniciarSesion(email, pass)) {
                 System.out.println("LOGUEADOas");
                 usuario = usD.obtenerUsuario(email);
-                
+
                 String tipo = usD.obtTipoUsuario(email);
                 switch (tipo) {
-                    case "1":
-                        {
-                            FacesContext fc = FacesContext.getCurrentInstance();
-                            fc.getExternalContext().redirect("home.cvs");
-                            break;
-                        }
-                    case "2":
-                        {
-                            FacesContext fc = FacesContext.getCurrentInstance();
-                            fc.getExternalContext().redirect("/CVSFACES_-_copia/administracion.cvs");
-                            break;
-                        }
-                    case "3":
-                        {
-                            FacesContext fc = FacesContext.getCurrentInstance();
-                            fc.getExternalContext().redirect("/CVSFACES_-_copia/crearProducto.cvs");
-                            break;
-                        }
+                    case "1": {
+                        FacesContext fc = FacesContext.getCurrentInstance();
+                        fc.getExternalContext().redirect("home.cvs");
+                        break;
+                    }
+                    case "2": {
+                        FacesContext fc = FacesContext.getCurrentInstance();
+                        fc.getExternalContext().redirect("/CVSFACES_-_copia/administracion.cvs");
+                        break;
+                    }
+                    case "3": {
+                        FacesContext fc = FacesContext.getCurrentInstance();
+                        fc.getExternalContext().redirect("/CVSFACES_-_copia/crearProducto.cvs");
+                        break;
+                    }
                 }
 
             } else {
@@ -77,9 +70,8 @@ public class LoginBean{
         }
         return usuario;
     }
-    
-    
-        public void listar() throws Exception {
+
+    public void listar() throws Exception {
         UsuarioDAO dao;
         try {
             dao = new UsuarioDAO();
@@ -88,15 +80,28 @@ public class LoginBean{
             throw e;
         }
     }
-    
-    
-        public void modificar() throws Exception {
+
+    public void eliminar(Usuario usr) throws Exception {
+        UsuarioDAO dao;
+        try {
+            dao = new UsuarioDAO();
+            dao.eliminar(usuario);
+            this.listar();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Eliminado", "Usuario Eliminado"));
+            logout();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void modificar() throws Exception {
         UsuarioDAO dao;
         try {
             dao = new UsuarioDAO();
             dao.modificar(usuario);
             this.listar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Modificado", "Usuario Modificado con Exito"));
+            logout();
         } catch (Exception e) {
             throw e;
         }

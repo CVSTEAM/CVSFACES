@@ -5,14 +5,14 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Crear Usuario</title>
+        <title>Mi cuenta</title>
         <h:outputStylesheet name="CrearUsuario.css" library="css"/>
 
     </h:head>
     <h:body>
         <h:form id="frm">
-            <p:growl autoUpdate="true"/>
-            <h2>Registrarse</h2>
+            <p:growl id="mensajes" showDetail="true" life="2000" autoUpdate="true"/>
+            <h2>Mi Cuenta</h2>
 
             <p:outputLabel value="Tipo de Documento:"/>
 
@@ -66,9 +66,9 @@
             <br/>
             <br/>
 
-            <p:commandButton class="button" value="Modificar" actionListener="#{loginBean.modificar()}"/>
-            
-
+            <p:commandButton class="button" value="Modificar" actionListener="#{loginBean.modificar()}" rendered="#{loginBean.usuario != null}"/>
+            <p:commandButton class="button" value="Eliminar" actionListener="#{loginBean.eliminar(usuario)}" rendered="#{loginBean.usuario != null}" update=":frm:mensajes"/>
+            <p:commandButton class="button" value="Regresas al Inicio"  rendered="#{loginBean.usuario == null}"/>
 
 
 
