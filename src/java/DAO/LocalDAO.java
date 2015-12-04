@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import model.Local;
-import model.Usuario;
+
 
 
 public class LocalDAO extends DAO{

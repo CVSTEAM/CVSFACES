@@ -15,18 +15,18 @@
 
 
                 <p:outputLabel value="Nombre" for="txtnombre" />
-                <p:inputText id="txtnombre" required="true"/>
+                <p:inputText id="txtnombre" required="true" value="#{localBean.local.nombre}"/>
 
                 <p:outputLabel value="Número de Local" for="txtnumero" />
-                <p:inputText id="txtnumero" required="true"/>
+                <p:inputText id="txtnumero" required="true" value="#{localBean.local.numero}"/>
 
                 <p:outputLabel value="Id Usuario" for="txtidusuario" />
-                <p:inputText id="txtidusuario" required="true"/> 
+                <p:inputText id="txtidusuario" required="true" value="#{localBean.local.ID_USUARIO}"/> 
 
                 <br/>
                 <br/>
 
-                <p:commandButton class="button" value="Crear" />
+                <p:commandButton class="button" value="Crear" actionListener="#{localBean.registrar()}" />
 
             </h:panelGrid>
         </h:form>  

@@ -16,7 +16,7 @@
 
             <p:outputLabel value="Tipo de Documento:" />
 
-            <p:selectOneMenu style="width:120px" rendered="true" value="#{usuarioBean.usuario.TIPO_DOCUMENTO}" required="true">
+            <p:selectOneMenu style="width:120px" rendered="true" value="#{propietarioBean.usuario.TIPO_DOCUMENTO}" required="true">
                 <f:selectItem itemLabel="Cedula" itemValue="1"/>
                 <f:selectItem itemLabel="Pasaporte" itemValue="2"/>
                 <f:selectItem itemLabel="Tarjeta de Identidad" itemValue="3"/>
@@ -25,41 +25,41 @@
             <br/>
 
             <p:outputLabel value="Documento" for="txtdocumento" />
-            <p:inputText id="txtdocumento" required="true" value="#{usuarioBean.usuario.NUMERO_DOCUMENTO}"/>
+            <p:inputText id="txtdocumento" required="true" value="#{propietarioBean.usuario.NUMERO_DOCUMENTO}"/>
 
             <p:outputLabel value="PrimerNombre" for="txtprimernombre" />
-            <p:inputText id="txtprimernombre" required="true" value="#{usuarioBean.usuario.PRIMERNOMBRE}"/>
+            <p:inputText id="txtprimernombre" required="true" value="#{propietarioBean.usuario.PRIMERNOMBRE}"/>
 
             <p:outputLabel value="SegundoNombre" for="txtsegundonombre"/>
-            <p:inputText id="txtsegundonombre" value="#{usuarioBean.usuario.SEGUNDONOMBRE}"/>
+            <p:inputText id="txtsegundonombre" value="#{propietarioBean.usuario.SEGUNDONOMBRE}"/>
 
             <p:outputLabel value="PrimerApellido" for="txtprimerapellido" />
-            <p:inputText id="txtprimerapellido" required="true" value="#{usuarioBean.usuario.PRIMERAPELLIDO}"/>
+            <p:inputText id="txtprimerapellido" required="true" value="#{propietarioBean.usuario.PRIMERAPELLIDO}"/>
 
             <p:outputLabel value="SegundoApellido" for="txtsegundoapellido" />
-            <p:inputText id="txtsegundoapellido" required="true" value="#{usuarioBean.usuario.SEGUNDOAPELLIDO}"/>            
+            <p:inputText id="txtsegundoapellido" required="true" value="#{propietarioBean.usuario.SEGUNDOAPELLIDO}"/>            
 
             <p:outputLabel value="Telefono" for="txttelefono" />
-            <p:inputText id="txttelefono" required="true" value="#{usuarioBean.usuario.TELEFONOFIJO}" />
+            <p:inputText id="txttelefono" required="true" value="#{propietarioBean.usuario.TELEFONOFIJO}" />
 
 
             <p:outputLabel value="Celular" for="txtcelular" />
-            <p:inputText id="txtcelular" value="#{usuarioBean.usuario.CELULAR}" />
+            <p:inputText id="txtcelular" value="#{propietarioBean.usuario.CELULAR}" />
 
 
             <p:outputLabel value="Correo" for="txtcorreo"/>
-            <p:inputText id="txtcorreo" required="true" value="#{usuarioBean.usuario.MAIL}"/>
+            <p:inputText id="txtcorreo" required="true" value="#{propietarioBean.usuario.MAIL}"/>
 
 
             <p:outputLabel value="Clave" for="txtclave" />
-            <p:password id="txtclave" required="true" value="#{usuarioBean.usuario.CONTRASENA}" />
+            <p:password id="txtclave" required="true" value="#{propietarioBean.usuario.CONTRASENA}" />
 
             <br/>
             <br/>
 
             <p:outputLabel value="Tipo de Usuario:" />
 
-            <p:selectOneMenu style="width:150px"  value="#{usuarioBean.usuario.ID_TIPO_USUARIO}" required="true">
+            <p:selectOneMenu style="width:150px"  value="#{propietarioBean.usuario.ID_TIPO_USUARIO}" required="true">
                 
                 <f:selectItem itemLabel="PROPIETARIO" itemValue="3"/>
                 
@@ -68,7 +68,7 @@
             <br/>
             <br/>
 
-            <p:commandButton class="button" value="Registrar" actionListener="#{usuarioBean.registrar()}"/>
+            <p:commandButton class="button" value="Registrar" actionListener="#{propietarioBean.registrar()}"/>
             
 
 
