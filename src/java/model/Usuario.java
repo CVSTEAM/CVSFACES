@@ -49,20 +49,7 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(int ID_USUARIO, String TIPO_DOCUMENTO, String PRIMERNOMBRE, String SEGUNDONOMBRE, String PRIMERAPELLIDO, String SEGUNDOAPELLIDO, String NUMERO_DOCUMENTO, String MAIL, String CONTRASENA, String TELEFONOFIJO, String CELULAR, int ID_TIPO_USUARIO) {
-        this.ID_USUARIO = ID_USUARIO;
-        this.TIPO_DOCUMENTO = TIPO_DOCUMENTO;
-        this.PRIMERNOMBRE = PRIMERNOMBRE;
-        this.SEGUNDONOMBRE = SEGUNDONOMBRE;
-        this.PRIMERAPELLIDO = PRIMERAPELLIDO;
-        this.SEGUNDOAPELLIDO = SEGUNDOAPELLIDO;
-        this.NUMERO_DOCUMENTO = NUMERO_DOCUMENTO;
-        this.MAIL = MAIL;
-        this.CONTRASENA = CONTRASENA;
-        this.TELEFONOFIJO = TELEFONOFIJO;
-        this.CELULAR = CELULAR;
-        this.ID_TIPO_USUARIO = ID_TIPO_USUARIO;
-    }
+
 
     public int getID_USUARIO() {
         return ID_USUARIO;

@@ -6,37 +6,29 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Crear producto</title>
-        <h:outputStylesheet name="CrearUsuario.css" library="css"/>
+        <h:outputStylesheet name="producto.css" library="css"/>
 
     </h:head>
-    <h:body>
+    <h:body class="body" styleClass="body">
 
-        <h:form id="frm">
-            <p:growl autoUpdate="true"/>
+        <h:form id="frm" class="form">
+            <p:messages autoUpdate="true"/>
             <center>
                 <h2>Registrar Producto</h2>
             </center>
             <h:panelGrid columns="2" cellspacing="20px">
 
-
-
-
                 <p:outputLabel value="Nombre" for="txtnombre"/>
-                <p:inputText id="txtnombre" required="true" value=""/>
+                <p:inputText id="txtnombre" required="true" value="#{productoBean.producto.NOMBRE}"/>
 
                 <p:outputLabel value="Precio"  for="txtprecio"/>
-                <p:inputText id="txtprecio" required="true" value=""/>
-
-                <p:outputLabel value="Foto" for="txtfoto"/>
-                <p:fileUpload  auto="true"  id="txtfoto" required="true" value=""/>
+                <p:inputText id="txtprecio" required="true" value="#{productoBean.producto.PRECIO}"/>
 
                 <p:outputLabel value="Descripción" for="txtdescripción"/>
-                <p:inputText id="txtdescripción" required="true" value=""/>
+                <p:inputTextarea id="txtdescripción" required="true" value="#{productoBean.producto.DESCRIPCION}" placeholder="Ingrese la descripcion del producto"/>
 
                 <p:outputLabel value="Categoria" for="txtcategoria"/>
-
-                <p:selectOneMenu style="width:150px" value="" required="true" id="txtcategoria">
-
+                <p:selectOneMenu style="width:150px" value="#{productoBean.producto.ID_CATEGORIA}" required="true" id="txtcategoria">
                     <f:selectItem itemLabel="Ropa" itemValue="1"/>
                     <f:selectItem itemLabel="Tecnologia" itemValue="2"/>
                     <f:selectItem itemLabel="Deporte" itemValue="3"/>
@@ -44,18 +36,49 @@
                     <f:selectItem itemLabel="Ocio" itemValue="5"/>
                 </p:selectOneMenu>
 
-
-
-
             </h:panelGrid>
             <center>
-                <p:commandButton class="button" value="Registrar" actionListener="#{usuarioBean.registrar()}"/>
+                <p:commandButton class="button" value="Registrar" actionListener="#{productoBean.Registrar()}" update=":frmdata:data" action="#{productoBean.listar()}" oncomplete="limpiarForm()" rendered="#{productoBean.producto.NOMBRE == null}" />
+                <p:commandButton class="button" value="Modificar" actionListener="#{productoBean.modificar()}" update=":frmdata:data" action="#{productoBean.listar()}" oncomplete="limpiarForm()" rendered="#{productoBean.producto.NOMBRE != null}" />
             </center>
         </h:form>
 
+        <h:form id="frmdata" styleClass="form2" class="form2">
 
+            <p:dataTable id="data" value="#{productoBean.lstProductos}" var="productos" >
 
+                <p:column headerText="Producto">
+                    <p:outputLabel value="#{productos.NOMBRE}"/>                                       
+                </p:column>
+                <p:column headerText="Precio">
+                    <p:outputLabel value="#{productos.PRECIO}"/>                                       
+                </p:column>
+                <p:column headerText="Descripcion">
+                    <p:outputLabel value="#{productos.DESCRIPCION}"/>                                       
+                </p:column>
+                <p:column headerText="Categoria">
+                    <p:outputLabel value="#{productos.ID_CATEGORIA}"/>                                       
+                </p:column>
+                <p:column headerText="Modificar">
+                    <p:commandLink value="Modificar" actionListener="#{productoBean.leerID(productos)}" update=":frm"/>                                       
+                </p:column>
 
-    </h:body>
+                <p:column headerText="Eliminar">
+                    <p:commandLink value="Eliminar" oncomplete="limpiarForm()" actionListener="#{productoBean.eliminar(productos)}" update=":frmdata:data" action="#{productoBean.listar()}"/>                                       
+                </p:column>
+
+            </p:dataTable>
+
+        </h:form>
+
+    </h:body>    
+
+    <script type="text/javascript">
+        function limpiarForm()
+        {
+            document.getElementById("frm").reset();
+        }
+    </script>  
+
 </html>
 
