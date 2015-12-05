@@ -5,8 +5,8 @@
  */
 package BEAN;
 
+import DAO.ProductoDAO;
 import DAO.UsuarioDAO;
-import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -17,18 +17,14 @@ import model.Usuario;
 @ManagedBean
 @ViewScoped
 
-public class PropietarioBean implements Serializable {
+public class PropietarioBean{
 
     private Usuario usuario = new Usuario();
     private List<Usuario> lstPropietarios;
     private String accion;
 
-    public String getAccion() {
-        return accion;
-    }
-
-    public void setAccion(String accion) {
-        this.accion = accion;
+    public PropietarioBean() throws Exception {
+        listar();
     }
 
     public Usuario getUsuario() {
@@ -39,12 +35,20 @@ public class PropietarioBean implements Serializable {
         this.usuario = usuario;
     }
 
-    public List<Usuario> getLstUsuarios() {
+    public List<Usuario> getLstPropietarios() {
         return lstPropietarios;
     }
 
-    public void setLstUsuarios(List<Usuario> lstUsuarios) {
-        this.lstPropietarios = lstUsuarios;
+    public void setLstPropietarios(List<Usuario> lstPropietarios) {
+        this.lstPropietarios = lstPropietarios;
+    }
+
+    public String getAccion() {
+        return accion;
+    }
+
+    public void setAccion(String accion) {
+        this.accion = accion;
     }
 
     private boolean isPostBack() {
@@ -59,10 +63,10 @@ public class PropietarioBean implements Serializable {
             if (Valor.equals("F")) {
                 if (isPostBack() == false) {
                     dao = new UsuarioDAO();
-                    lstPropietarios = dao.listar();
+                    lstPropietarios = dao.listarProp();
                 } else {
                     dao = new UsuarioDAO();
-                    lstPropietarios = dao.listar();
+                    lstPropietarios = dao.listarProp();
                 }
 
             }
@@ -76,7 +80,17 @@ public class PropietarioBean implements Serializable {
         try {
             dao = new UsuarioDAO();
             dao.registrar(usuario);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Propietario Registrado", "Propietario Registrado con exito"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Propietario Registrado", "Propietario Registrado con exito"));            
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    public void listar() throws Exception {
+        UsuarioDAO dao;
+        try {
+            dao = new UsuarioDAO();
+            lstPropietarios = dao.listarProp();
         } catch (Exception e) {
             throw e;
         }

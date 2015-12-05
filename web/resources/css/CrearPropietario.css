@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : comunicaciones
 */
 
-body {
+.body {
     
     background:url(../Imagenes/5.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -19,10 +19,25 @@ body {
     
 }
 
-form{
+.form{
     
     
 	width:900px;
+	height:auto;
+        margin: 10px auto;
+	background-color:rgba(255,255,255,0.4);
+	border-radius:10px;
+	padding:25px;
+	box-shadow:1px solid #ffffff;
+    
+    
+    
+}
+
+.form2{
+    
+    
+	width:1300px;
 	height:auto;
         margin: 10px auto;
 	background-color:rgba(255,255,255,0.4);
@@ -66,8 +81,3 @@ h2{
     color:#22539B;
 }
 
-label{
-    
-    color:#ffffff;
-    text-align:center;
-}

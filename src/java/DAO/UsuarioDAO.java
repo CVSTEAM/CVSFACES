@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import model.Producto;
 import model.Usuario;
 
 public class UsuarioDAO extends DAO {
@@ -138,6 +139,40 @@ public class UsuarioDAO extends DAO {
         }
         return lista;
     }
+    
+    
+    public List<Usuario> listarProp() throws Exception {
+        List<Usuario> listaprop;
+        ResultSet rs;
+        try {
+            this.Conectar();
+            PreparedStatement st = this.getConnection().prepareCall("SELECT ID_USUARIO,TIPO_DOCUMENTO,PRIMER_NOMBRE,SEGUNDO_NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO,NUMERO_DOCUMENTO,MAIL,CONTRASENA,TELEFONO_FIJO,TELEFONO_CELULAR,ID_TIPO_USUARIO FROM USUARIO WHERE ID_TIPO_USUARIO=3");
+            rs = st.executeQuery();
+            listaprop = new ArrayList();
+            while (rs.next()) {
+                Usuario prop = new Usuario();
+                prop.setID_USUARIO(rs.getInt("ID_USUARIO"));
+                prop.setTIPO_DOCUMENTO(rs.getString("TIPO_DOCUMENTO"));
+                prop.setPRIMERNOMBRE(rs.getString("PRIMER_NOMBRE"));
+                prop.setSEGUNDONOMBRE(rs.getString("SEGUNDO_NOMBRE"));
+                prop.setPRIMERAPELLIDO(rs.getString("PRIMER_APELLIDO"));
+                prop.setSEGUNDOAPELLIDO(rs.getString("SEGUNDO_APELLIDO"));
+                prop.setNUMERO_DOCUMENTO(rs.getString("NUMERO_DOCUMENTO"));
+                prop.setMAIL(rs.getString("MAIL"));
+                prop.setCONTRASENA(rs.getString("CONTRASENA"));
+                prop.setTELEFONOFIJO(rs.getString("TELEFONO_FIJO"));
+                prop.setCELULAR(rs.getString("TELEFONO_CELULAR"));
+                prop.setID_TIPO_USUARIO(rs.getInt("ID_TIPO_USUARIO"));
+                listaprop.add(prop);
+            }
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            this.Cerrar();
+        }
+        return listaprop;
+    }
+    
 
     public void modificar(Usuario usuario) throws Exception {
         try {
@@ -162,6 +197,8 @@ public class UsuarioDAO extends DAO {
             this.Cerrar();
         }
     }
+    
+
 
     public void eliminar(Usuario usr) throws Exception {
         try {
@@ -193,7 +230,7 @@ public class UsuarioDAO extends DAO {
                 usr.setSEGUNDONOMBRE(rs.getString("SEGUNDO_NOMBRE"));
                 usr.setPRIMERAPELLIDO(rs.getString("PRIMER_APELLIDO"));
                 usr.setSEGUNDOAPELLIDO(rs.getString("SEGUNDO_APELLIDO"));
-                usr.setNUMERO_DOCUMENTO(rs.getString("DOCUMENTO"));
+                usr.setNUMERO_DOCUMENTO(rs.getString("NUMERO_DOCUMENTO"));
                 usr.setMAIL(rs.getString("MAIL"));
                 usr.setCONTRASENA(rs.getString("CONTRASENA"));
                 usr.setTELEFONOFIJO(rs.getString("TELEFONO_FIJO"));

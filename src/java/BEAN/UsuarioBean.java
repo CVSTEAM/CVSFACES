@@ -17,9 +17,13 @@ import model.Usuario;
 
 public class UsuarioBean implements Serializable {
 
-    private Usuario usuario= new Usuario();
+    private Usuario usuario = new Usuario();
     private List<Usuario> lstUsuarios;
     private String accion;
+  
+
+
+
 
     public String getAccion() {
         return accion;
@@ -69,8 +73,6 @@ public class UsuarioBean implements Serializable {
         }
     }
 
-
-
     public void registrar() throws Exception {
         UsuarioDAO dao;
         try {
@@ -81,7 +83,6 @@ public class UsuarioBean implements Serializable {
             throw e;
         }
     }
-
 
     public void leerID(Usuario usr) throws Exception {
         UsuarioDAO dao;
@@ -99,5 +100,3 @@ public class UsuarioBean implements Serializable {
         }
     }
 }
-    
-

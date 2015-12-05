@@ -13,6 +13,8 @@ import model.Usuario;
 public class LoginBean {
 
     private Usuario usuario;
+
+    
     private List<Usuario> lstDatosUsuario;
 
     public List<Usuario> getLstDatosUsuario() {
@@ -101,6 +103,7 @@ public class LoginBean {
             dao.modificar(usuario);
             this.listar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Modificado", "Usuario Modificado con Exito"));
+            
             logout();
         } catch (Exception e) {
             throw e;

@@ -9,8 +9,8 @@
         <h:outputStylesheet name="CrearPropietario.css" library="css"/>
 
     </h:head>
-    <h:body>
-        <h:form id="frm">
+    <h:body class="body">
+        <h:form id="frm" class="form">
             <p:growl autoUpdate="true"/>
             <h2>Registrar Propietario</h2>
             <h:panelGrid columns="4" cellspacing="20px">
@@ -68,23 +68,60 @@
 
                     <f:selectItem itemLabel="PROPIETARIO" itemValue="3"/>
 
-                   
+
 
                 </p:selectOneMenu>
-                
-                 <p:outputLabel value="Confirmar Clave" for="txtconfirmarclave" />
-                    <p:password id="txtconfirmarclave" required="true" />
 
-
-
-
-
-
-
+                <p:outputLabel value="Confirmar Clave" for="txtconfirmarclave" />
+                <p:password id="txtconfirmarclave" required="true" />
             </h:panelGrid>
             <center>
-                <p:commandButton class="button" value="Registrar" actionListener="#{propietarioBean.registrar()}"/>
+                <p:commandButton class="button" value="Registrar" actionListener="#{propietarioBean.registrar()}" update=":frmdata:data" action="#{propietarioBean.listar()}" oncomplete="limpiarForm()" rendered="#{propietarioBean.usuario.PRIMERNOMBRE == null}" />
+                <p:commandButton class="button" value="Modificar" actionListener="#{loginBean.modificar()}" update=":frmdata:data" action="#{propietarioBean.listar()}" oncomplete="limpiarForm()" rendered="#{propietarioBean.usuario.PRIMERNOMBRE != null}" />
+
+
+
             </center>
+        </h:form>
+
+        <h:form id="frmdata" styleClass="form2" class="form2">
+
+            <p:dataTable id="data" value="#{propietarioBean.lstPropietarios}" var="propietarios" >
+
+
+                <p:column headerText="Primer Nombre">
+                    <p:outputLabel value="#{propietarios.PRIMERNOMBRE}"/>                                       
+                </p:column>
+                <p:column headerText="Segundo Nombre">
+                    <p:outputLabel value="#{propietarios.SEGUNDONOMBRE}"/>                                       
+                </p:column>
+                <p:column headerText="Primer Apellido">
+                    <p:outputLabel value="#{propietarios.PRIMERAPELLIDO}"/>                                       
+                </p:column>
+                <p:column headerText="Segundo Apellido">
+                    <p:outputLabel value="#{propietarios.SEGUNDOAPELLIDO}"/>                                       
+                </p:column>
+                <p:column headerText="Cedula">
+                    <p:outputLabel value="#{propietarios.NUMERO_DOCUMENTO}"/>                                       
+                </p:column>
+                <p:column headerText="Correo Electronico">
+                    <p:outputLabel value="#{propietarios.MAIL}"/>                                       
+                </p:column>
+                <p:column headerText="Telefono Fijo">
+                    <p:outputLabel value="#{propietarios.TELEFONOFIJO}"/>                                       
+                </p:column>
+                <p:column headerText="Celular">
+                    <p:outputLabel value="#{propietarios.CELULAR}" />                                       
+                </p:column>
+                <p:column headerText="Modificar">
+                    <p:commandLink value="Modificar" actionListener="#{propietarioBean.leerID(propietarios)}" update=":frm"/>                                       
+                </p:column>
+                <p:column headerText="Eliminar">
+                    <p:commandLink value="Eliminar" oncomplete="limpiarForm()" actionListener="#{loginBean.eliminar(propietarios)}" update=":frmdata:data" action="#{propietarioBean.listar()}"/>                                       
+                </p:column>
+
+            </p:dataTable>
+
         </h:form>
 
 
