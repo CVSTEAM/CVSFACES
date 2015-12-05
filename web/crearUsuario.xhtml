@@ -50,8 +50,8 @@
 
 
                 <p:outputLabel value="Correo" for="txtcorreo"/>
-                <p:inputText id="txtcorreo" required="true"  value="#{usuarioBean.usuario.MAIL}" placeholder="ejemplo@ejemplo.com"/>
-
+                <p:inputText id="txtcorreo" required="true"  value="#{usuarioBean.usuario.MAIL}" placeholder="ejemplo@ejemplo.com"> <f:validator validatorId="EmailValidator"></f:validator></p:inputText>
+                
 
                 <p:outputLabel value="Clave" for="txtclave"/>
                 <p:password id="txtclave" required="true"  value="#{usuarioBean.usuario.CONTRASENA}"
