@@ -46,7 +46,7 @@
 
 
                 <p:outputLabel value="Celular" for="txtcelular"/>
-                <p:inputText id="txtcelular" required="true"  value="#{usuarioBean.usuario.CELULAR}" />
+                <p:inputText id="txtcelular" required="true"  value="#{usuarioBean.usuario.CELULAR}" > <f:validateLength maximum="12" minimum="12"/></p:inputText>
 
 
                 <p:outputLabel value="Correo" for="txtcorreo"/>

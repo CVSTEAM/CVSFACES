@@ -41,23 +41,23 @@
                 <p:outputLabel value="SegundoApellido" for="txtsegundoapellido" />
                 <p:inputText id="txtsegundoapellido" required="true" value="#{propietarioBean.usuario.SEGUNDOAPELLIDO}"/>            
 
-                <p:outputLabel value="Telefono" for="txttelefono" />
-                <p:inputText id="txttelefono" required="true" value="#{propietarioBean.usuario.TELEFONOFIJO}" />
+                <p:outputLabel value="Telefono" for="txttelefono"/>
+                <p:inputText id="txttelefono" required="true"  value="#{usuarioBean.usuario.TELEFONOFIJO}"> <f:validateLength maximum="12" minimum="7"/></p:inputText>
 
 
-                <p:outputLabel value="Celular" for="txtcelular" />
-                <p:inputText id="txtcelular" value="#{propietarioBean.usuario.CELULAR}" />
+                <p:outputLabel value="Celular" for="txtcelular"/>
+                <p:inputText id="txtcelular" required="true"  value="#{usuarioBean.usuario.CELULAR}" > <f:validateLength maximum="12" minimum="12"/></p:inputText>
 
 
                 <p:outputLabel value="Correo" for="txtcorreo"/>
-                <p:inputText id="txtcorreo" required="true" value="#{propietarioBean.usuario.MAIL}"/>
+                <p:inputText id="txtcorreo" required="true"  value="#{usuarioBean.usuario.MAIL}" placeholder="ejemplo@ejemplo.com"> <f:validator validatorId="EmailValidator"></f:validator></p:inputText>
 
 
-                <p:outputLabel value="Clave" for="txtclave" />
-                <p:password id="txtclave" required="true" value="#{propietarioBean.usuario.CONTRASENA}" 
-                            validatorMessage="Las Claves no Coinciden" weakLabel="Demasiado Debil" strongLabel="Muy Fuerte" goodLabel="Aceptable"
-                            match="txtconfirmarclave" feedback="true" promptLabel="Ingrese una Clave"
-                            />
+                <p:outputLabel value="Clave" for="txtclave"/>
+                <p:password id="txtclave" value="#{usuarioBean.usuario.CONTRASENA}" validatorMessage="Las Claves no Coinciden o la contraseña no es Fuerte" weakLabel="Demasiado Debil"  goodLabel="Aceptable" strongLabel="Muy Fuerte"
+                            match="txtclave2" feedback="true" promptLabel="Ingrese Una Clave">
+                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})" />
+                </p:password>
 
 
 
