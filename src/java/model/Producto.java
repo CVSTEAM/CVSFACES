@@ -2,20 +2,22 @@ package model;
 
 public class Producto {
     
-    private int ID_PRODUCTO;
+    private Integer ID_PRODUCTO;
     private String NOMBRE;
     private int PRECIO;
     private String FOTO;
     private String DESCRIPCION;
     private int ID_CATEGORIA;
 
-    public int getID_PRODUCTO() {
+    public Integer getID_PRODUCTO() {
         return ID_PRODUCTO;
     }
 
-    public void setID_PRODUCTO(int ID_PRODUCTO) {
+    public void setID_PRODUCTO(Integer ID_PRODUCTO) {
         this.ID_PRODUCTO = ID_PRODUCTO;
     }
+
+
 
     public String getNOMBRE() {
         return NOMBRE;

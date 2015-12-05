@@ -26,11 +26,16 @@
                     
                 <p:outputLabel value="Id Usuario" for="txtidusuario" />
                 <p:inputText id="txtidusuario" required="true" value="#{localBean.local.ID_USUARIO}"/> 
+                <p:inputText id="txtnumero" required="true" value="#{localBean.local.numero}" /> 
+                <p:outputLabel value="Asignar Propietario" for="txtidusuario"/>               
+                <p:inputText id="txtidusuario" required="true" value="#{localBean.local.ID_USUARIO}" /> 
+
+         
 
                 <br/>
                 <br/>
 
-                <p:commandButton class="button" value="Crear" actionListener="#{localBean.registrar()}" />
+                <p:commandButton class="button" value="Crear" actionListener="#{localBean.registrar()}" update=":frmdata:data" action="#{localBean.listar()}" oncomplete="limpiarForm()" rendered="#{localBean.local.nombre == null}"/>
 
             </h:panelGrid>
         </h:form>  

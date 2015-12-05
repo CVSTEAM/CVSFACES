@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.Producto;
 import model.Usuario;
 
 public class UsuarioDAO extends DAO {

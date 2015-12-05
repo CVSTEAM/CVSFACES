@@ -6,6 +6,7 @@
 package BEAN;
 
 import DAO.LocalDAO;
+import DAO.ProductoDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -17,11 +18,18 @@ import model.Local;
 @ManagedBean
 @ViewScoped
 
-public class LocalBean implements Serializable{
-    
+public class LocalBean implements Serializable {
+
     private Local local = new Local();
-     private List<Local> lstLocales;
+    private List<Local> lstLocales;
     private String accion;
+
+    public LocalBean() throws Exception{
+        listar();
+    }
+    
+    
+    
 
     public Local getLocal() {
         return local;
@@ -46,13 +54,24 @@ public class LocalBean implements Serializable{
     public void setAccion(String accion) {
         this.accion = accion;
     }
-    
+
     private boolean isPostBack() {
         boolean rpta;
         rpta = FacesContext.getCurrentInstance().isPostback();
         return rpta;
     }
-    
+
+    public void listar() throws Exception {
+        LocalDAO dao;
+        try {
+            dao = new LocalDAO();
+            lstLocales = dao.listar();
+            System.out.println(lstLocales);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
     public void listarr(String Valor) throws Exception {
         LocalDAO dao;
         try {
@@ -70,8 +89,8 @@ public class LocalBean implements Serializable{
             throw e;
         }
     }
-    
-       public void registrar() throws Exception {
+
+    public void registrar() throws Exception {
         LocalDAO dao;
         try {
             dao = new LocalDAO();
@@ -81,7 +100,8 @@ public class LocalBean implements Serializable{
             throw e;
         }
     }
-           public void leerID(Local loc) throws Exception {
+
+    public void leerID(Local loc) throws Exception {
         LocalDAO dao;
         Local temp;
 

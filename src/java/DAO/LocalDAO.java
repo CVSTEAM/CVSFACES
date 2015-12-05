@@ -15,11 +15,10 @@ public class LocalDAO extends DAO{
      public void registraLocal(Local loc) throws Exception {
         try {
             this.Conectar();
-            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO LOCAL (NOMBRE,NUMERO,ID_USUARIO) values(?,?,?)");
-            st.setString(1, loc.getNombre());
-            st.setString(2, loc.getNumero());
-            st.setInt(3, loc.getID_USUARIO());
-           
+            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO LOCAL (ID_USUARIO,NOMBRE,NUMERO) values(?,?,?)");            
+            st.setInt(1, loc.getID_USUARIO());
+            st.setString(2, loc.getNombre());
+            st.setString(3, loc.getNumero());                    
             st.executeUpdate();
         } catch (Exception e) {
             throw e;
