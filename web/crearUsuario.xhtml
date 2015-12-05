@@ -30,7 +30,7 @@
                 <p:inputText id="txtdocumento" required="true" value="#{usuarioBean.usuario.NUMERO_DOCUMENTO}"/>
 
                 <p:outputLabel value="Primer Nombre" for="txtprimernombre"/>
-                <p:inputText id="txtprimernombre" required="true"  value="#{usuarioBean.usuario.PRIMERNOMBRE}"> <f:validator validatorId="LetraValidator" ></f:validator></p:inputText>
+                <p:inputText id="txtprimernombre" required="true"  value="#{usuarioBean.usuario.PRIMERNOMBRE}"/>
 
                 <p:outputLabel value="Segundo Nombre" for="txtsegundonombre"/>
                 <p:inputText id="txtsegundonombre"   value="#{usuarioBean.usuario.SEGUNDONOMBRE}"/>
@@ -51,16 +51,16 @@
 
                 <p:outputLabel value="Correo" for="txtcorreo"/>
                 <p:inputText id="txtcorreo" required="true"  value="#{usuarioBean.usuario.MAIL}" placeholder="ejemplo@ejemplo.com"> <f:validator validatorId="EmailValidator"></f:validator></p:inputText>
-                
+
 
                 <p:outputLabel value="Clave" for="txtclave"/>
-                <p:password id="txtclave" required="true"  value="#{usuarioBean.usuario.CONTRASENA}"
-                            validatorMessage="Las Claves no Coinciden" weakLabel="Demasiado Debil"  goodLabel="Aceptable" strongLabel="Muy Fuerte"
-                            match="txtclave2" feedback="true" promptLabel="Ingrese Una Clave"
-                            />
-
+                <p:password id="txtclave" value="#{usuarioBean.usuario.CONTRASENA}" validatorMessage="Las Claves no Coinciden o la contraseña no es Fuerte" weakLabel="Demasiado Debil"  goodLabel="Aceptable" strongLabel="Muy Fuerte"
+                            match="txtclave2" feedback="true" promptLabel="Ingrese Una Clave">
+                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})" />
+                </p:password>
+                
                 <p:outputLabel value="Confirmar Clave" for="txtclave2"/>
-                <p:password id="txtclave2" required="true"  />
+                <p:password id="txtclave2" required="true"/>
 
                 <p:outputLabel value="Tipo de Usuario:"/>
                 <p:selectOneMenu style="width:150px" value="#{usuarioBean.usuario.ID_TIPO_USUARIO}" required="true">
