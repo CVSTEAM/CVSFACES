@@ -2,13 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Crear Local</title>
-        <h:outputStylesheet name="CrearUsuario.css" library="css"/>
+        <h:outputStylesheet name="producto.css" library="css"/>
     </h:head>
-    <h:body>
-        <h:form id="frm">
+    <h:body class="body">
+        <h:form id="frm" class="form">
             <p:growl autoUpdate="true"/>
             <h2>Crear Local</h2>
             <h:panelGrid columns="2" cellspacing="20px">
@@ -20,7 +21,7 @@
                 <p:inputText id="txtnombre" required="true" value="#{localBean.local.nombre}"/>
 
                 <p:outputLabel value="Número de Local" for="txtnumero" />
-                <p:inputText id="txtnumero" required="true" value="#{localBean.local.numero}"/>
+                <p:inputText id="txtnumero" required="true" value="#{localBean.local.numero}" > <f:validateLength maximum="5" minimum="3"/></p:inputText>
 
                 <p:outputLabel value="Id Usuario" for="txtidusuario" />
                 <p:inputText id="txtidusuario" required="true" value="#{localBean.local.ID_USUARIO}"/> 
@@ -32,6 +33,39 @@
 
             </h:panelGrid>
         </h:form>  
+        <h:form id="frmdata" styleClass="form2" class="form2">
+
+            <p:dataTable id="data" value="#{localBean.lstLocales}" var="Locales" emptyMessage="No hay Locales Agregados">
+
+
+                <p:column headerText="Nombre">
+                    <p:outputLabel value="#{Locales.nombre}"/>                                       
+                </p:column>
+                <p:column headerText="Número">
+                    <p:outputLabel value="#{Locales.numero}"/>                                       
+                </p:column>
+                <p:column headerText="Propietario">
+                    <p:outputLabel value="#{Locales.ID_USUARIO}"/>                                       
+                </p:column>
+
+                <p:column headerText="Modificar">
+                    <p:commandLink value="Modificar" actionListener="#{propietarioBean.leerID(propietarios)}" update=":frm"/>                                       
+                </p:column>
+                <p:column headerText="Eliminar">
+                    <p:commandLink value="Eliminar" oncomplete="limpiarForm()" actionListener="#{loginBean.eliminar(propietarios)}" update=":frmdata:data" action="#{propietarioBean.listar()}"/>                                       
+                </p:column>
+
+            </p:dataTable>
+
+        </h:form>
+        <script type="text/javascript">
+            function limpiarForm()
+            {
+                document.getElementById("frm").reset();
+            }
+        </script>  
+
+
     </h:body>
 </html>
 

@@ -45,7 +45,7 @@
 
         <h:form id="frmdata" styleClass="form2" class="form2">
 
-            <p:dataTable id="data" value="#{productoBean.lstProductos}" var="productos" >
+            <p:dataTable id="data" value="#{productoBean.lstProductos}" var="productos"  emptyMessage="No hay Productos Agregados">
 
                 <p:column headerText="Producto">
                     <p:outputLabel value="#{productos.NOMBRE}"/>                                       
