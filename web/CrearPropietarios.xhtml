@@ -5,20 +5,20 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Crear Propietario</title>
+        <title>Gestionar Propietario</title>
         <h:outputStylesheet name="CrearPropietario.css" library="css"/>
 
     </h:head>
     <h:body class="body">
         <h:form id="frm" class="form">
             <p:growl autoUpdate="true"/>
-            <h2>Registrar Propietario</h2>
+            <h2>Gestionar Propietario</h2>
             <h:panelGrid columns="4" cellspacing="20px">
 
 
                 <p:outputLabel value="Tipo de Documento:" />
 
-                <p:selectOneMenu style="width:120px" rendered="true" value="#{propietarioBean.usuario.TIPO_DOCUMENTO}" required="true">
+                <p:selectOneMenu style="width:120px" rendered="true" value="#{propietarioBean.propietario.TIPO_DOCUMENTO}" required="true">
                     <f:selectItem itemLabel="Cedula" itemValue="1"/>
                     <f:selectItem itemLabel="Pasaporte" itemValue="2"/>
                     <f:selectItem itemLabel="Tarjeta de Identidad" itemValue="3"/>
@@ -27,41 +27,41 @@
 
 
                 <p:outputLabel value="Documento" for="txtdocumento" />
-                <p:inputText id="txtdocumento" required="true" value="#{propietarioBean.usuario.NUMERO_DOCUMENTO}"/>
+                <p:inputText id="txtdocumento" required="true" value="#{propietarioBean.propietario.NUMERO_DOCUMENTO}"/>
 
                 <p:outputLabel value="PrimerNombre" for="txtprimernombre" />
-                <p:inputText id="txtprimernombre" required="true" value="#{propietarioBean.usuario.PRIMERNOMBRE}"/>
+                <p:inputText id="txtprimernombre" required="true" value="#{propietarioBean.propietario.PRIMERNOMBRE}"/>
 
                 <p:outputLabel value="SegundoNombre" for="txtsegundonombre"/>
-                <p:inputText id="txtsegundonombre" value="#{propietarioBean.usuario.SEGUNDONOMBRE}"/>
+                <p:inputText id="txtsegundonombre" value="#{propietarioBean.propietario.SEGUNDONOMBRE}"/>
 
                 <p:outputLabel value="PrimerApellido" for="txtprimerapellido" />
-                <p:inputText id="txtprimerapellido" required="true" value="#{propietarioBean.usuario.PRIMERAPELLIDO}"/>
+                <p:inputText id="txtprimerapellido" required="true" value="#{propietarioBean.propietario.PRIMERAPELLIDO}"/>
 
                 <p:outputLabel value="SegundoApellido" for="txtsegundoapellido" />
-                <p:inputText id="txtsegundoapellido" required="true" value="#{propietarioBean.usuario.SEGUNDOAPELLIDO}"/>            
+                <p:inputText id="txtsegundoapellido" required="true" value="#{propietarioBean.propietario.SEGUNDOAPELLIDO}"/>            
 
                 <p:outputLabel value="Telefono" for="txttelefono"/>
-                <p:inputText id="txttelefono" required="true"  value="#{usuarioBean.usuario.TELEFONOFIJO}"/>
+                <p:inputText id="txttelefono" required="true"  value="#{propietarioBean.propietario.TELEFONOFIJO}"/>
 
 
                 <p:outputLabel value="Celular" for="txtcelular"/>
-                <p:inputText id="txtcelular" required="true"  value="#{usuarioBean.usuario.CELULAR}"/>
+                <p:inputText id="txtcelular" required="true"  value="#{propietarioBean.propietario.CELULAR}"/>
 
 
                 <p:outputLabel value="Correo" for="txtcorreo"/>
-                <p:inputText id="txtcorreo" required="true"  value="#{usuarioBean.usuario.MAIL}"/>
+                <p:inputText id="txtcorreo" required="true"  value="#{propietarioBean.propietario.MAIL}"/>
 
 
                 <p:outputLabel value="Clave" for="txtclave"/>
-                <p:password id="txtclave" value="#{usuarioBean.usuario.CONTRASENA}" validatorMessage="Las Claves no Coinciden o la contraseña no es Fuerte" weakLabel="Demasiado Debil"  goodLabel="Aceptable" strongLabel="Muy Fuerte"
-                            match="txtclave2" feedback="true" promptLabel="Ingrese Una Clave">                    
+                <p:password id="txtclave" value="#{propietarioBean.propietario.CONTRASENA}" validatorMessage="Las Claves no Coinciden o la contraseña no es Fuerte" weakLabel="Demasiado Debil"  goodLabel="Aceptable" strongLabel="Muy Fuerte"
+                            match="txtconfirmarclave" feedback="true" promptLabel="Ingrese Una Clave">                    
                 </p:password>
 
 
                 <p:outputLabel value="Tipo de Usuario:" />
 
-                <p:selectOneMenu style="width:150px"  value="#{propietarioBean.usuario.ID_TIPO_USUARIO}" required="true">
+                <p:selectOneMenu style="width:150px"  value="#{propietarioBean.propietario.ID_TIPO_USUARIO}" required="true">
                     <f:selectItem itemLabel="PROPIETARIO" itemValue="3"/>
                 </p:selectOneMenu>
 
@@ -69,8 +69,8 @@
                 <p:password id="txtconfirmarclave" required="true" />
             </h:panelGrid>
             <center>
-                <p:commandButton class="button" value="Registrar" actionListener="#{propietarioBean.registrar()}" update=":frmdata:data" action="#{propietarioBean.listar()}" oncomplete="limpiarForm()" rendered="#{propietarioBean.usuario.PRIMERNOMBRE == null}" />
-                <p:commandButton class="button" value="Modificar" actionListener="#{loginBean.modificar()}" update=":frmdata:data" action="#{propietarioBean.listar()}" oncomplete="limpiarForm()" rendered="#{propietarioBean.usuario.PRIMERNOMBRE != null}" />
+                <p:commandButton class="button" value="Registrar" actionListener="#{propietarioBean.registrar()}" update=":frmdata:data" action="#{propietarioBean.listar()}" oncomplete="limpiarForm()" rendered="#{propietarioBean.propietario.PRIMERNOMBRE == null}" />
+                <p:commandButton class="button" value="Modificar" actionListener="#{propietarioBean.modificarProp()}" update=":frmdata:data" action="#{propietarioBean.listar()}" oncomplete="limpiarForm()" rendered="#{propietarioBean.propietario.PRIMERNOMBRE != null}" />
 
 
 
@@ -79,7 +79,7 @@
 
         <h:form id="frmdata" styleClass="form2" class="form2">
 
-            <p:dataTable id="data" value="#{propietarioBean.lstPropietarios}" var="propietarios" >
+            <p:dataTable id="data" value="#{propietarioBean.lstPropietarios}" var="propietarios" emptyMessage="No hay propietarios Registrados" >
 
 
                 <p:column headerText="Primer Nombre">
@@ -110,7 +110,7 @@
                     <p:commandLink value="Modificar" actionListener="#{propietarioBean.leerID(propietarios)}" update=":frm"/>                                       
                 </p:column>
                 <p:column headerText="Eliminar">
-                    <p:commandLink value="Eliminar" oncomplete="limpiarForm()" actionListener="#{loginBean.eliminar(propietarios)}" update=":frmdata:data" action="#{propietarioBean.listar()}"/>                                       
+                    <p:commandLink value="Eliminar" oncomplete="limpiarForm()" actionListener="#{propietarioBean.eliminar(propietarios)}" update=":frmdata:data" action="#{propietarioBean.listar()}"/>                                       
                 </p:column>
 
             </p:dataTable>

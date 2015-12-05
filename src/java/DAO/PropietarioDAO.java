@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.Producto;
+import model.Propietario;
 import model.Usuario;
 
 public class PropietarioDAO extends DAO{
@@ -52,8 +52,8 @@ public class PropietarioDAO extends DAO{
         }
     }
      
-     public Usuario obtenerUsuario(String mail) throws Exception {
-        Usuario usr = null;
+     public Propietario obtenerUsuario(String mail) throws Exception {
+        Propietario prt = null;
         ResultSet rs;
 
         try {
@@ -63,19 +63,19 @@ public class PropietarioDAO extends DAO{
             rs = st.executeQuery();
             
             while (rs.next()) {
-                usr = new Usuario();
-                usr.setID_USUARIO(rs.getInt("ID_USUARIO"));
-                usr.setTIPO_DOCUMENTO(rs.getString("TIPO_DOCUMENTO"));
-                usr.setPRIMERNOMBRE(rs.getString("PRIMER_NOMBRE"));
-                usr.setSEGUNDONOMBRE(rs.getString("SEGUNDO_NOMBRE"));
-                usr.setPRIMERAPELLIDO(rs.getString("PRIMER_APELLIDO"));
-                usr.setSEGUNDOAPELLIDO(rs.getString("SEGUNDO_APELLIDO"));
-                usr.setNUMERO_DOCUMENTO(rs.getString("NUMERO_DOCUMENTO"));
-                usr.setMAIL(rs.getString("MAIL"));
-                usr.setCONTRASENA(rs.getString("CONTRASENA"));
-                usr.setTELEFONOFIJO(rs.getString("TELEFONO_FIJO"));
-                usr.setCELULAR(rs.getString("TELEFONO_CELULAR"));
-                usr.setID_TIPO_USUARIO(rs.getInt("ID_TIPO_USUARIO"));
+                prt = new Propietario();
+                prt.setID_USUARIO(rs.getInt("ID_USUARIO"));
+                prt.setTIPO_DOCUMENTO(rs.getString("TIPO_DOCUMENTO"));
+                prt.setPRIMERNOMBRE(rs.getString("PRIMER_NOMBRE"));
+                prt.setSEGUNDONOMBRE(rs.getString("SEGUNDO_NOMBRE"));
+                prt.setPRIMERAPELLIDO(rs.getString("PRIMER_APELLIDO"));
+                prt.setSEGUNDOAPELLIDO(rs.getString("SEGUNDO_APELLIDO"));
+                prt.setNUMERO_DOCUMENTO(rs.getString("NUMERO_DOCUMENTO"));
+                prt.setMAIL(rs.getString("MAIL"));
+                prt.setCONTRASENA(rs.getString("CONTRASENA"));
+                prt.setTELEFONOFIJO(rs.getString("TELEFONO_FIJO"));
+                prt.setCELULAR(rs.getString("TELEFONO_CELULAR"));
+                prt.setID_TIPO_USUARIO(rs.getInt("ID_TIPO_USUARIO"));
 
             }
         } catch (Exception e) {
@@ -83,24 +83,24 @@ public class PropietarioDAO extends DAO{
         } finally {
             this.Cerrar();
         }
-        return usr;
+        return prt;
     }
      
-       public void registrar(Usuario usr) throws Exception {
+       public void registrar(Propietario prt) throws Exception {
         try {
             this.Conectar();
             PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO USUARIO (TIPO_DOCUMENTO,PRIMER_NOMBRE,SEGUNDO_NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO,NUMERO_DOCUMENTO,MAIL,CONTRASENA,TELEFONO_FIJO,TELEFONO_CELULAR,ID_TIPO_USUARIO) values(?,?,?,?,?,?,?,?,?,?,?)");
-            st.setString(1, usr.getTIPO_DOCUMENTO());
-            st.setString(2, usr.getPRIMERNOMBRE());
-            st.setString(3, usr.getSEGUNDONOMBRE());
-            st.setString(4, usr.getPRIMERAPELLIDO());
-            st.setString(5, usr.getSEGUNDOAPELLIDO());
-            st.setString(6, usr.getNUMERO_DOCUMENTO());
-            st.setString(7, usr.getMAIL());
-            st.setString(8, usr.getCONTRASENA());
-            st.setString(9, usr.getTELEFONOFIJO());
-            st.setString(10, usr.getCELULAR());
-            st.setInt(11, usr.getID_TIPO_USUARIO());
+            st.setString(1, prt.getTIPO_DOCUMENTO());
+            st.setString(2, prt.getPRIMERNOMBRE());
+            st.setString(3, prt.getSEGUNDONOMBRE());
+            st.setString(4, prt.getPRIMERAPELLIDO());
+            st.setString(5, prt.getSEGUNDOAPELLIDO());
+            st.setString(6, prt.getNUMERO_DOCUMENTO());
+            st.setString(7, prt.getMAIL());
+            st.setString(8, prt.getCONTRASENA());
+            st.setString(9, prt.getTELEFONOFIJO());
+            st.setString(10, prt.getCELULAR());
+            st.setInt(11, prt.getID_TIPO_USUARIO());
             st.executeUpdate();
         } catch (Exception e) {
             throw e;
@@ -110,8 +110,8 @@ public class PropietarioDAO extends DAO{
     }
        
        
-    public List<Usuario> listar() throws Exception {
-        List<Usuario> lista;
+    public List<Propietario> listar() throws Exception {
+        List<Propietario> lista;
         ResultSet rs;
         try {
             this.Conectar();
@@ -119,20 +119,20 @@ public class PropietarioDAO extends DAO{
             rs = st.executeQuery();
             lista = new ArrayList();
             while (rs.next()) {
-                Usuario usr = new Usuario();
-                usr.setID_USUARIO(rs.getInt("ID_USUARIO"));
-                usr.setTIPO_DOCUMENTO(rs.getString("TIPO_DOCUMENTO"));
-                usr.setPRIMERNOMBRE(rs.getString("PRIMER_NOMBRE"));
-                usr.setSEGUNDONOMBRE(rs.getString("SEGUNDO_NOMBRE"));
-                usr.setPRIMERAPELLIDO(rs.getString("PRIMER_APELLIDO"));
-                usr.setSEGUNDOAPELLIDO(rs.getString("SEGUNDO_APELLIDO"));
-                usr.setNUMERO_DOCUMENTO(rs.getString("NUMERO_DOCUMENTO"));
-                usr.setMAIL(rs.getString("MAIL"));
-                usr.setCONTRASENA(rs.getString("CONTRASENA"));
-                usr.setTELEFONOFIJO(rs.getString("TELEFONO_FIJO"));
-                usr.setCELULAR(rs.getString("TELEFONO_CELULAR"));
-                usr.setID_TIPO_USUARIO(rs.getInt("ID_TIPO_USUARIO"));
-                lista.add(usr);
+                Propietario prt = new Propietario();
+                prt.setID_USUARIO(rs.getInt("ID_USUARIO"));
+                prt.setTIPO_DOCUMENTO(rs.getString("TIPO_DOCUMENTO"));
+                prt.setPRIMERNOMBRE(rs.getString("PRIMER_NOMBRE"));
+                prt.setSEGUNDONOMBRE(rs.getString("SEGUNDO_NOMBRE"));
+                prt.setPRIMERAPELLIDO(rs.getString("PRIMER_APELLIDO"));
+                prt.setSEGUNDOAPELLIDO(rs.getString("SEGUNDO_APELLIDO"));
+                prt.setNUMERO_DOCUMENTO(rs.getString("NUMERO_DOCUMENTO"));
+                prt.setMAIL(rs.getString("MAIL"));
+                prt.setCONTRASENA(rs.getString("CONTRASENA"));
+                prt.setTELEFONOFIJO(rs.getString("TELEFONO_FIJO"));
+                prt.setCELULAR(rs.getString("TELEFONO_CELULAR"));
+                prt.setID_TIPO_USUARIO(rs.getInt("ID_TIPO_USUARIO"));
+                lista.add(prt);
             }
         } catch (Exception e) {
             throw e;
@@ -142,8 +142,8 @@ public class PropietarioDAO extends DAO{
         return lista;
     }
     
-        public List<Usuario> listarProp() throws Exception {
-        List<Usuario> listaprop;
+        public List<Propietario> listarProp() throws Exception {
+        List<Propietario> listaprop;
         ResultSet rs;
         try {
             this.Conectar();
@@ -151,7 +151,7 @@ public class PropietarioDAO extends DAO{
             rs = st.executeQuery();
             listaprop = new ArrayList();
             while (rs.next()) {
-                Usuario prop = new Usuario();
+                Propietario prop = new Propietario();
                 prop.setID_USUARIO(rs.getInt("ID_USUARIO"));
                 prop.setTIPO_DOCUMENTO(rs.getString("TIPO_DOCUMENTO"));
                 prop.setPRIMERNOMBRE(rs.getString("PRIMER_NOMBRE"));
@@ -174,22 +174,22 @@ public class PropietarioDAO extends DAO{
         return listaprop;
     }
     
-        public void modificar(Usuario usuario) throws Exception {
+        public void modificar(Propietario propietario) throws Exception {
         try {
             this.Conectar();
             PreparedStatement st = this.getConnection().prepareStatement("UPDATE USUARIO SET TIPO_DOCUMENTO= ?,PRIMER_NOMBRE= ?,SEGUNDO_NOMBRE= ?,PRIMER_APELLIDO= ?,SEGUNDO_APELLIDO= ?,NUMERO_DOCUMENTO= ?,MAIL= ?,CONTRASENA= ?,TELEFONO_FIJO= ?,TELEFONO_CELULAR= ?,ID_TIPO_USUARIO= ? WHERE ID_USUARIO= ? ");
-            st.setString(1, usuario.getTIPO_DOCUMENTO());
-            st.setString(2, usuario.getPRIMERNOMBRE());
-            st.setString(3, usuario.getSEGUNDONOMBRE());
-            st.setString(4, usuario.getPRIMERAPELLIDO());
-            st.setString(5, usuario.getSEGUNDOAPELLIDO());
-            st.setString(6, usuario.getNUMERO_DOCUMENTO());
-            st.setString(7, usuario.getMAIL());
-            st.setString(8, usuario.getCONTRASENA());
-            st.setString(9, usuario.getTELEFONOFIJO());
-            st.setString(10, usuario.getCELULAR());
-            st.setInt(11, usuario.getID_TIPO_USUARIO());
-            st.setInt(12, usuario.getID_USUARIO());
+            st.setString(1, propietario.getTIPO_DOCUMENTO());
+            st.setString(2, propietario.getPRIMERNOMBRE());
+            st.setString(3, propietario.getSEGUNDONOMBRE());
+            st.setString(4, propietario.getPRIMERAPELLIDO());
+            st.setString(5, propietario.getSEGUNDOAPELLIDO());
+            st.setString(6, propietario.getNUMERO_DOCUMENTO());
+            st.setString(7, propietario.getMAIL());
+            st.setString(8, propietario.getCONTRASENA());
+            st.setString(9, propietario.getTELEFONOFIJO());
+            st.setString(10, propietario.getCELULAR());
+            st.setInt(11, propietario.getID_TIPO_USUARIO());
+            st.setInt(12, propietario.getID_USUARIO());
             st.executeUpdate();
         } catch (Exception e) {
             throw e;
@@ -200,11 +200,11 @@ public class PropietarioDAO extends DAO{
     
 
 
-    public void eliminar(Usuario usr) throws Exception {
+    public void eliminar(Propietario prt) throws Exception {
         try {
             this.Conectar();
             PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM USUARIO WHERE ID_USUARIO= ? ");
-            st.setInt(1, usr.getID_USUARIO());
+            st.setInt(1, prt.getID_USUARIO());
             st.executeUpdate();
         } catch (Exception e) {
             throw e;
@@ -213,29 +213,29 @@ public class PropietarioDAO extends DAO{
         }
     }
     
-        public Usuario leerID(Usuario user) throws Exception {
-        Usuario usr = null;
+        public Propietario leerID(Propietario prop) throws Exception {
+        Propietario prt = null;
         ResultSet rs;
 
         try {
             this.Conectar();
             PreparedStatement st = this.getConnection().prepareStatement("SELECT ID_USUARIO,TIPO_DOCUMENTO,PRIMER_NOMBRE,SEGUNDO_NOMBRE,PRIMER_APELLIDO,SEGUNDO_APELLIDO,NUMERO_DOCUMENTO,MAIL,CONTRASENA,TELEFONO_FIJO,TELEFONO_CELULAR,ID_TIPO_USUARIO FROM USUARIO WHERE ID_USUARIO=?");
-            st.setInt(1, user.getID_USUARIO());
+            st.setInt(1, prop.getID_USUARIO());
             rs = st.executeQuery();
             while (rs.next()) {
-                usr = new Usuario();
-                usr.setID_USUARIO(rs.getInt("ID_USUARIO"));
-                usr.setTIPO_DOCUMENTO(rs.getString("TIPO_DOCUMENTO"));
-                usr.setPRIMERNOMBRE(rs.getString("PRIMER_NOMBRE"));
-                usr.setSEGUNDONOMBRE(rs.getString("SEGUNDO_NOMBRE"));
-                usr.setPRIMERAPELLIDO(rs.getString("PRIMER_APELLIDO"));
-                usr.setSEGUNDOAPELLIDO(rs.getString("SEGUNDO_APELLIDO"));
-                usr.setNUMERO_DOCUMENTO(rs.getString("NUMERO_DOCUMENTO"));
-                usr.setMAIL(rs.getString("MAIL"));
-                usr.setCONTRASENA(rs.getString("CONTRASENA"));
-                usr.setTELEFONOFIJO(rs.getString("TELEFONO_FIJO"));
-                usr.setCELULAR(rs.getString("TELEFONO_CELULAR"));
-                usr.setID_TIPO_USUARIO(rs.getInt("ID_TIPO_USUARIO"));                
+                prt = new Propietario();
+                prt.setID_USUARIO(rs.getInt("ID_USUARIO"));
+                prt.setTIPO_DOCUMENTO(rs.getString("TIPO_DOCUMENTO"));
+                prt.setPRIMERNOMBRE(rs.getString("PRIMER_NOMBRE"));
+                prt.setSEGUNDONOMBRE(rs.getString("SEGUNDO_NOMBRE"));
+                prt.setPRIMERAPELLIDO(rs.getString("PRIMER_APELLIDO"));
+                prt.setSEGUNDOAPELLIDO(rs.getString("SEGUNDO_APELLIDO"));
+                prt.setNUMERO_DOCUMENTO(rs.getString("NUMERO_DOCUMENTO"));
+                prt.setMAIL(rs.getString("MAIL"));
+                prt.setCONTRASENA(rs.getString("CONTRASENA"));
+                prt.setTELEFONOFIJO(rs.getString("TELEFONO_FIJO"));
+                prt.setCELULAR(rs.getString("TELEFONO_CELULAR"));
+                prt.setID_TIPO_USUARIO(rs.getInt("ID_TIPO_USUARIO"));                
                 
             }
         } catch (Exception e) {
@@ -243,7 +243,7 @@ public class PropietarioDAO extends DAO{
         } finally {
             this.Cerrar();
         }
-        return usr;
+        return prt;
     }
 
     

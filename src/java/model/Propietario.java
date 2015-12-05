@@ -2,12 +2,10 @@ package model;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable {
+public class Propietario implements Serializable {
 
 
     private int ID_USUARIO;
-
-
     private String TIPO_DOCUMENTO;
     private String PRIMERNOMBRE;
     private String SEGUNDONOMBRE;
@@ -20,7 +18,7 @@ public class Usuario implements Serializable {
     private String CELULAR;
     private int ID_TIPO_USUARIO;
 
-    public Usuario() {
+    public Propietario() {
     }
 
     public int getID_USUARIO() {
