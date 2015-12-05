@@ -5,7 +5,6 @@
  */
 package BEAN;
 
-import DAO.ProductoDAO;
 import DAO.UsuarioDAO;
 import java.util.List;
 import javax.faces.application.FacesMessage;
