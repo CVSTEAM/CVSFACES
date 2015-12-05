@@ -15,13 +15,13 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-@FacesValidator("EmailValidator")
-public class EmailValidator implements Validator {
+@FacesValidator("LetraValidator")
+public class LetraValidator implements Validator {
 
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 
-        Pattern partern = Pattern.compile("\\w+@\\w+\\.\\w+");
+        Pattern partern = Pattern.compile("w+");
         Matcher matcher = partern.matcher((CharSequence) value);
         HtmlInputText htmlinputtext = (HtmlInputText) component;
         String label;

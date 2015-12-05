@@ -30,7 +30,7 @@
                 <p:inputText id="txtdocumento" required="true" value="#{usuarioBean.usuario.NUMERO_DOCUMENTO}"/>
 
                 <p:outputLabel value="Primer Nombre" for="txtprimernombre"/>
-                <p:inputText id="txtprimernombre" required="true"  value="#{usuarioBean.usuario.PRIMERNOMBRE}"/>
+                <p:inputText id="txtprimernombre" required="true"  value="#{usuarioBean.usuario.PRIMERNOMBRE}"> <f:validator validatorId="LetraValidator"></f:validator></p:inputText>
 
                 <p:outputLabel value="Segundo Nombre" for="txtsegundonombre"/>
                 <p:inputText id="txtsegundonombre"   value="#{usuarioBean.usuario.SEGUNDONOMBRE}"/>
@@ -42,7 +42,7 @@
                 <p:inputText id="txtsegundoapellido" required="true"  value="#{usuarioBean.usuario.SEGUNDOAPELLIDO}"/>            
 
                 <p:outputLabel value="Telefono" for="txttelefono"/>
-                <p:inputText id="txttelefono" required="true"  value="#{usuarioBean.usuario.TELEFONOFIJO}" />
+                <p:inputText id="txttelefono" required="true"  value="#{usuarioBean.usuario.TELEFONOFIJO}"> <f:validateLongRange minimum="7" maximum="10"></f:validateLongRange></p:inputText>
 
 
                 <p:outputLabel value="Celular" for="txtcelular"/>
