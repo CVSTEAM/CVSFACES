@@ -20,15 +20,14 @@
                 <p:outputLabel value="Nombre" for="txtnombre" />
                 <p:inputText id="txtnombre" required="true" value="#{localBean.local.nombre}"/>
 
-                <p:outputLabel value="Número de Local" for="txtnumero" />
-                
+                <p:outputLabel value="Número de Local" for="txtnumero" />                
                 <p:inputText id="txtnumero" required="true" title="Señor Usuario el Número de Local debe contener max 5 y mínimo 3 Números" value="#{localBean.local.numero}"><f:validateLength maximum="5" minimum="3"/></p:inputText>
                     
-                <p:outputLabel value="Id Usuario" for="txtidusuario" />
-                <p:inputText id="txtidusuario" required="true" value="#{localBean.local.ID_USUARIO}"/> 
-                <p:inputText id="txtnumero" required="true" value="#{localBean.local.numero}" /> 
-                <p:outputLabel value="Asignar Propietario" for="txtidusuario"/>               
-                <p:inputText id="txtidusuario" required="true" value="#{localBean.local.ID_USUARIO}" /> 
+          
+                <p:outputLabel value="Asignar Propietario" />               
+                <h:selectOneMenu value="#{propietarioBean.propietario}" required="true">
+                    <f:selectItems value="#{propietarioBean.lstPropietarios}" var="c"  itemValue="#{c.ID_USUARIO}"  itemLabel="#{c.PRIMERNOMBRE}"/>                    
+                </h:selectOneMenu>
 
          
 
@@ -55,10 +54,10 @@
                 </p:column>
 
                 <p:column headerText="Modificar">
-                    <p:commandLink value="Modificar" actionListener="#{propietarioBean.leerID(propietarios)}" update=":frm"/>                                       
+                    <p:commandLink value="Modificar" actionListener="#{localBean.leerID(locales)}" update=":frm"/>                                       
                 </p:column>
                 <p:column headerText="Eliminar">
-                    <p:commandLink value="Eliminar" oncomplete="limpiarForm()" actionListener="#{loginBean.eliminar(propietarios)}" update=":frmdata:data" action="#{propietarioBean.listar()}"/>                                       
+                    <p:commandLink value="Eliminar" oncomplete="limpiarForm()" actionListener="#{loginBean.eliminar(locales)}" update=":frmdata:data" action="#{localBean.listar()}"/>                                       
                 </p:column>
 
             </p:dataTable>

@@ -6,7 +6,6 @@
 package BEAN;
 
 import DAO.LocalDAO;
-import DAO.ProductoDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -26,8 +25,7 @@ public class LocalBean implements Serializable {
 
     public LocalBean() throws Exception{
         listar();
-    }
-    
+    }   
     
     
 

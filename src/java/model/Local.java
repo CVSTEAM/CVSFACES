@@ -6,12 +6,8 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-public class Local {
+public class Local implements Serializable{
 
     private int ID_LOCAL;
 

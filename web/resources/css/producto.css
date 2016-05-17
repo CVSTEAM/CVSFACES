@@ -99,8 +99,9 @@ h2{
     color:#22539B;
 }
 
-label{
+.label{
     
-    color:#000000;
+    color:#ffffff;
     text-align:center;
+    font-size: 30px;
 }

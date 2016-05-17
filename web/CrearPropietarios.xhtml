@@ -8,10 +8,15 @@
         <title>Gestionar Propietario</title>
         <h:outputStylesheet name="CrearPropietario.css" library="css"/>
 
+
+
     </h:head>
     <h:body class="body">
+
         <h:form id="frm" class="form">
             <p:growl autoUpdate="true"/>
+            <h:outputLabel value="Bienvenido #{loginBean.usuario.PRIMERNOMBRE}" rendered="#{loginBean.usuario != null}" class="label"/>
+            <h:commandLink value="Cerrar Sesion" actionListener="#{loginBean.logout()}" style="font-size: 20px" immediate="true"/>
             <h2>Gestionar Propietario</h2>
             <h:panelGrid columns="4" cellspacing="20px">
 
@@ -42,7 +47,7 @@
                 <p:inputText id="txtsegundoapellido" required="true" value="#{propietarioBean.propietario.SEGUNDOAPELLIDO}"/>            
 
                 <p:outputLabel value="Telefono" for="txttelefono"/>
-                <p:inputText id="txttelefono" required="true"  value="#{propietarioBean.propietario.TELEFONOFIJO}"/>
+                <p:inputText id="txttelefono" required="true"  title="Señor Usuario el Telefono debe contener de 7 a 12 Números" value="#{propietarioBean.propietario.TELEFONOFIJO}"> <f:validateLength maximum="12" minimum="7"/></p:inputText>
 
 
                 <p:outputLabel value="Celular" for="txtcelular"/>
@@ -68,9 +73,11 @@
                 <p:outputLabel value="Confirmar Clave" for="txtconfirmarclave" />
                 <p:password id="txtconfirmarclave" required="true" />
             </h:panelGrid>
+            <p:tooltip for="txttelefono" showEvent="focus" hideEvent="blur" trackMouse="true"/>
             <center>
-                <p:commandButton class="button" value="Registrar" actionListener="#{propietarioBean.registrar()}" update=":frmdata:data" action="#{propietarioBean.listar()}" oncomplete="limpiarForm()" rendered="#{propietarioBean.propietario.PRIMERNOMBRE == null}" />
-                <p:commandButton class="button" value="Modificar" actionListener="#{propietarioBean.modificarProp()}" update=":frmdata:data" action="#{propietarioBean.listar()}" oncomplete="limpiarForm()" rendered="#{propietarioBean.propietario.PRIMERNOMBRE != null}" />
+                <p:commandButton class="button" value="Registrar" actionListener="#{propietarioBean.registrar()}" update=":frmdata:data" action="#{propietarioBean.listar()}"  rendered="#{propietarioBean.propietario.PRIMERNOMBRE == null}" oncomplete="limpiarForm()"/>
+                <p:commandButton class="button" value="Modificar" actionListener="#{propietarioBean.modificarProp()}" update=":frmdata:data" action="#{propietarioBean.listar()}"  rendered="#{propietarioBean.propietario.PRIMERNOMBRE != null}" />
+
 
 
 

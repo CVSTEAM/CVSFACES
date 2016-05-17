@@ -25,6 +25,8 @@ import model.Usuario;
 public class PropietarioBean {
 
     private Propietario propietario = new Propietario();
+    
+    
     private List<Propietario> lstPropietarios;
     private String accion;
 
@@ -98,7 +100,7 @@ public class PropietarioBean {
         PropietarioDAO dao;
         try {
             dao = new PropietarioDAO();
-            dao.eliminar(propietario);
+            dao.eliminar(prt);
             this.listar();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Eliminado", "Usuario Eliminado"));
         } catch (Exception e) {
@@ -111,7 +113,7 @@ public class PropietarioBean {
         try {
             dao = new PropietarioDAO();
             dao.registrar(propietario);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Propietario Registrado", "Propietario Registrado con exito"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Propietario Registrado", "Propietario Registrado con exito"));          
         } catch (Exception e) {
             throw e;
         }

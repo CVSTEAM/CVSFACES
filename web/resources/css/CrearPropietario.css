@@ -75,9 +75,16 @@ input.button{
     border:none;
 }
 
-h2{
+.h2{
     
     text-align:center;
     color:#22539B;
 }
 
+
+.label{
+    
+    color:#ffffff;
+    text-align:center;
+    font-size: 30px;
+}

@@ -13,6 +13,8 @@
 
         <h:form id="frm" class="form">
             <p:messages autoUpdate="true"/>
+            <h:outputLabel value="Bienvenido #{loginBean.usuario.PRIMERNOMBRE}" rendered="#{loginBean.usuario != null}" class="label"/>
+            <h:commandLink value="Cerrar Sesion" actionListener="#{loginBean.logout()}" style="font-size: 20px" immediate="true"/>
             <center>
                 <h2>Gestionar Productos</h2>
             </center>
@@ -40,6 +42,7 @@
             <center>
                 <p:commandButton class="button" value="Registrar" actionListener="#{productoBean.Registrar()}" update=":frmdata:data" action="#{productoBean.listar()}" oncomplete="limpiarForm()" rendered="#{productoBean.producto.NOMBRE == null}" />
                 <p:commandButton class="button" value="Modificar" actionListener="#{productoBean.modificar()}" update=":frmdata:data" action="#{productoBean.listar()}" oncomplete="limpiarForm()" rendered="#{productoBean.producto.NOMBRE != null}" />
+
             </center>
         </h:form>
 
